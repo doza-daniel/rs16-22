@@ -42,13 +42,6 @@ void Game::showMap()
             addItem(m[i][j]);
         }
     }
-    /* temporary - numerates the tiles*/
-    QVector<Tile *> path = mMap.getTowers();
-    for(int i = 0; i < path.size(); ++i) {
-        QGraphicsTextItem *t = new QGraphicsTextItem(QString(QString::number(i)));
-        t->setPos(path[i]->pos());
-        addItem(t);
-    }
 }
 
 void Game::show()

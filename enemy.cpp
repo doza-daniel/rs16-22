@@ -25,16 +25,17 @@ void Enemy::advance(int)
 {
     if(mWaypoint >= mPath.size())
         return;
-    QLineF line(this->pos(), *(mPath[mWaypoint]));
+    QRectF tmp = mapRectToScene(boundingRect());
+    QLineF line(tmp.center(), *(mPath[mWaypoint]));
+
     if(line.length() < 2)
         mWaypoint++;
 
     QTransform m;
-    m.translate(-this->boundingRect().center().x(), -this->boundingRect().center().y());
-    m.rotate(90);
-    m.translate(this->boundingRect().center().x(), this->boundingRect().center().y());
+    m.translate(TILE_DIM / 2, TILE_DIM / 2);
+    m.rotate(-line.angle());
+    m.translate(-TILE_DIM / 2, -TILE_DIM / 2);
     setTransform(m);
 
-    //moveBy(2 * qCos(qDegreesToRadians(-1 * line.angle())), 2 * qSin(qDegreesToRadians(-1 * line.angle())));
-
+    moveBy(2 * qCos(qDegreesToRadians(-1 * line.angle())), 2 * qSin(qDegreesToRadians(-1 * line.angle())));
 }
