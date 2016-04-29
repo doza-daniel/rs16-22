@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>map/levels/01.txt</file>
+    </qresource>
+</RCC>
