@@ -9,6 +9,7 @@
 #include "endtile.h"
 #include "game.h"
 #include "map.h"
+#include "tower.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,10 +18,15 @@ int main(int argc, char *argv[])
 
     Game game(0, 0, 1000, 800);
 
-    //game.loadMap();
-
-    Map m(16, 20);
-
+    /*Pavle's test case*/
+    QVector<Tile*> towers = game.getMap().getTowers();
+    for(auto &t:towers){
+        QPointF pos = t->pos();
+        auto tmp = t;
+        t = new Tower(pos.x(),pos.y());
+        game.addItem(t);
+        delete tmp;
+    }
     game.show();
 
 

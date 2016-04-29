@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QRectF>
 #include <QGraphicsView>
+#include <QGraphicsSceneMouseEvent>
 #include "map.h"
 #include "enemy.h"
 
@@ -17,6 +18,9 @@ public:
     Map getMap() const;
     void showMap();
     void show();
+
+    /*Pavle's test*/
+    void mousePressEvent(QGraphicsSceneMouseEvent* e) Q_DECL_OVERRIDE;
 
 private:
     void initView();

@@ -2,6 +2,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <iostream>
+#include "projectile.h"
 
 
 Game::Game(const QRectF &sceneRect, QObject *parent)
@@ -42,6 +43,14 @@ void Game::showMap()
             addItem(m[i][j]);
         }
     }
+}
+
+/*Pavle's test*/
+void Game::mousePressEvent(QGraphicsSceneMouseEvent* e)
+{
+    Projectile* bullet = new Projectile();
+    bullet->setPos(bullet->mapToScene(e->pos()));
+    this->addItem(bullet);
 }
 
 void Game::show()
