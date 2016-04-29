@@ -21,7 +21,9 @@ SOURCES += main.cpp \
     endtile.cpp \
     game.cpp \
     map.cpp \
-    enemy.cpp
+    enemy.cpp \
+    tower.cpp \
+    projectile.cpp
 
 HEADERS  += \
     tile.h \
@@ -32,7 +34,9 @@ HEADERS  += \
     endtile.h \
     game.h \
     enemy.h \
-    map.h
+    map.h \
+    tower.h \
+    projectile.h
 
 RESOURCES += \
     resources.qrc
