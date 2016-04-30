@@ -10,6 +10,11 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
     setPos(x, y);
 }
 
+Enemy::~Enemy()
+{
+
+}
+
 QRectF Enemy::boundingRect() const
 {
     return QRectF(0, 0, mDimension, mDimension);
@@ -18,12 +23,19 @@ QRectF Enemy::boundingRect() const
 void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     painter->setBrush(Qt::black);
-    painter->drawEllipse(boundingRect().center().x() - 10, boundingRect().center().y() - 5, 20, 10);
+    painter->drawEllipse(getCenter().x() - 10, getCenter().y() - 5, 20, 10);
 }
 
-QPointF Enemy::getCenter()
+QPointF Enemy::getCenter() const
 {
     return QPointF(boundingRect().center().x(), boundingRect().center().y());
+}
+
+QPainterPath Enemy::shape() const
+{
+    QPainterPath path;
+    path.addEllipse(getCenter(), 8, 5);
+    return path;
 }
 
 void Enemy::advance(int)

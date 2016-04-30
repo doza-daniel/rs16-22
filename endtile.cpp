@@ -25,3 +25,17 @@ void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget
     painter->drawText(QPointF(15, 30), QString("END"));
 }
 
+QPainterPath EndTile::shape() const
+{
+    QPainterPath path;
+    path.addRect(mTile);
+    return path;
+}
+
+void EndTile::advance(int)
+{
+    QList<QGraphicsItem*> items = this->collidingItems();
+    for(int i = 0; i < items.size(); i++)
+        delete items[i];
+}
+
