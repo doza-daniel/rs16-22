@@ -1,5 +1,6 @@
 #include "spawner.h"
 #include "game.h"
+#include <QDebug>
 
 Spawner::Spawner(Game *game)
     :mGame(game)
