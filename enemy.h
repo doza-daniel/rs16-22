@@ -4,6 +4,8 @@
 #include <QRectF>
 #include "tile.h"
 
+extern const int MOVEMENT_SPEED;
+
 class Enemy : public QGraphicsItem
 {
 public:
