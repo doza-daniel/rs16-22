@@ -12,6 +12,15 @@ Game::Game(const QRectF &sceneRect, QObject *parent)
 {
     initView();
     showMap();
+
+    Spawner *enemySpawner = new Spawner(this);
+    QTimer *spawnTimer = new QTimer();
+    QObject::connect(spawnTimer, SIGNAL(timeout()), enemySpawner, SLOT(spawnEnemy()));
+    spawnTimer->start(2000);
+
+    QTimer *moveTimer = new QTimer();
+    QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
+    moveTimer->start(50);
 }
 
 Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
