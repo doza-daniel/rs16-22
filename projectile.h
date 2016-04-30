@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
+#include <QLineF>
 
 class Projectile: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT

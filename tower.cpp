@@ -4,12 +4,21 @@
 #include <QPolygonF>
 #include <QGraphicsPolygonItem>
 #include <QLineF>
-
-Tower::Tower(int x,int y):TowerTile(TILE_DIM,x,y)
+#include <QTimer>
+#include <QList>
+#include <QDebug>
+#include "projectile.h"
+#include "enemy.h"
+Tower::Tower(int x,int y,QGraphicsScene &game):QObject(),TowerTile(TILE_DIM,x,y),mGame(game)
 {
     mAttackArea =  createPolygon();
 
     centerPolygon();
+
+    //test connect timer to attackTarget
+    QTimer* timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(acquireTarget()));
+    timer->start(mAttackSpeed);
 }
 /*Paints the tower tile according to this function*/
 void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
@@ -24,6 +33,66 @@ void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
     painter->setBrush(tower);
     painter->drawEllipse(mCenter, TILE_DIM - 35, TILE_DIM - 35);
+}
+
+void Tower::setAttackSpeed(int attackSpeed)
+{
+    mAttackSpeed = attackSpeed;
+}
+
+void Tower::attackTarget()
+{
+    //create a projectile
+    Projectile* bullet = new Projectile();
+    bullet->setPos(x()+TILE_DIM/2,y()+TILE_DIM/2);
+
+    //create a line from which we can withdraw the angle
+    QLineF movingLine(QPointF(x()+TILE_DIM/2,y()+TILE_DIM/2),mAttackDest);
+
+    //getting the angle from a line
+    //HAX: -1 is used because the rotation returned is counter to the rotation needed
+    int angle = -1*movingLine.angle();
+    bullet->setRotation(angle);
+
+    mGame.addItem(bullet);
+}
+
+/*Used to detect collision between Enemy and mAttackRange polygon*/
+void Tower::acquireTarget()
+{
+    //get all the coliding items
+    QList<QGraphicsItem*> colidingItems = mAttackArea->collidingItems();
+
+    //when there are no collisions the size is 1 ( tower in the middle )
+    if(colidingItems.size() == 21){
+
+        mTargetAcquired = false;
+        return; //do nothing
+    }
+
+    //we need closest enemy and its point
+    double closestDistance = 1000;
+    QPointF closestPoint = QPointF(0,0);
+
+    //there are collisions, check if enemy is coliding
+    for(auto &e:colidingItems){
+        //attempt to convert the GraphisItem to Enemy
+        Enemy* tmp = dynamic_cast<Enemy*>(e);
+        if(tmp){ //flase if tmp == nullptr, true if it is an Enemy
+            double distanceTo = distanceToItem(tmp);
+            if(distanceTo < closestDistance){ //if there is a closer enemy
+                closestDistance = distanceTo; // new closest
+                closestPoint = e->mapToScene(e->boundingRect().center()); // get the Point of the closest enemy
+                mTargetAcquired = true;
+            }
+        }
+    }
+
+    //when we're done, we have to closest point to the enemy
+    mAttackDest = closestPoint;
+    //now attack that target
+    attackTarget();
+
 }
 
 /*Poitns for attack area (1,0) (2,0) (3,1) (3,2) (1,3) (0,2) (0,1)*/
@@ -44,6 +113,13 @@ QGraphicsPolygonItem* Tower::createPolygon(){
 
     //this <- represents the parent so that polygon knows where to draw itself
     return new QGraphicsPolygonItem(polygon,this);
+}
+
+/*Returns double the distance between an item and the tower */
+double Tower::distanceToItem(QGraphicsItem *item)
+{
+    QLineF line(pos(),item->pos());
+    return line.length();
 }
 
 /*1.5 is the center of previously defined polygon*/

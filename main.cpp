@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     for(auto &t:towers){
         QPointF pos = t->pos();
         auto tmp = t;
-        t = new Tower(pos.x(),pos.y());
+        t = new Tower(pos.x(),pos.y(),game);
         game.addItem(t);
         delete tmp;
     }

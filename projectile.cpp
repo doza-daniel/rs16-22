@@ -2,18 +2,22 @@
 #include <QPixmap>
 #include <QTimer>
 #include <qmath.h>
+#include <QDebug>
+#include <QTransform>
 
 Projectile::Projectile(QGraphicsItem *parent)
 {
-    //sets the image of the projectile
-    setPixmap(QPixmap(":/map/images/Tower/bullet.png"));
+    //sets the image of the projectile and scales it accordingly
+    setPixmap(QPixmap(":/map/images/tower/bullet.png"));
 
     //creates a timer, adds it to a slot which will be called periodically
     QTimer* moveTimer = new QTimer(this);
     connect(moveTimer,SIGNAL(timeout()),this,SLOT(move()));
     //set the periodic calls to be equal to shootingSpeed
     moveTimer->start(mShootingSpeed);
+
 }
+
 /*Used periodically to move the item in the correct posititon*/
 void Projectile::move()
 {
