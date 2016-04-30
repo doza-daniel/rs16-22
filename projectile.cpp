@@ -45,7 +45,7 @@ void Projectile::checkForHit()
         Enemy* tmp = dynamic_cast<Enemy*>(e);
         if(tmp){
             //check the center of enemy to center of bullet
-            if(e->mapToScene(e->boundingRect()).contains(e->mapToScene(e->boundingRect().center()))){
+            if(this->collidesWithItem(e)){
                 delete tmp;
                 delete this;
             }

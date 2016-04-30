@@ -15,8 +15,8 @@ public:
 public slots:
     void move();
 private:
-     int mShootingSpeed = 40;
-     int mProjectileSpeed = 15;
+     int mShootingSpeed = 10;
+     int mProjectileSpeed = 2;
      void checkForHit();
 };
 
