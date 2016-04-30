@@ -21,7 +21,7 @@ Tower::Tower(int x,int y,QGraphicsScene &game):QObject(),TowerTile(TILE_DIM,x,y)
     timer->start(mAttackSpeed);
 }
 /*Paints the tower tile according to this function*/
-void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
+void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QColor grass(51, 204, 51);
     QColor tower(255, 255, 0);

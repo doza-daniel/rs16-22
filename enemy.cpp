@@ -21,6 +21,11 @@ void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *
     painter->drawEllipse(boundingRect().center().x() - 10, boundingRect().center().y() - 5, 20, 10);
 }
 
+QPointF Enemy::getCenter()
+{
+    return QPointF(boundingRect().center().x(), boundingRect().center().y());
+}
+
 void Enemy::advance(int)
 {
     if(mWaypoint >= mPath.size())

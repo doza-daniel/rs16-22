@@ -1,4 +1,5 @@
 #include "game.h"
+#include "spawner.h"
 #include <QTimer>
 #include <QPainter>
 #include <iostream>
@@ -12,6 +13,15 @@ Game::Game(const QRectF &sceneRect, QObject *parent)
 {
     initView();
     showMap();
+
+    Spawner *enemySpawner = new Spawner(this);
+    QTimer *spawnTimer = new QTimer();
+    QObject::connect(spawnTimer, SIGNAL(timeout()), enemySpawner, SLOT(spawnEnemy()));
+    spawnTimer->start(2000);
+
+    QTimer *moveTimer = new QTimer();
+    QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
+    moveTimer->start(50);
 }
 
 Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
@@ -22,12 +32,14 @@ Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
     initView();
     showMap();
 
-    Enemy *e = new Enemy(mMap.getStart()->x(), mMap.getStart()->y(), mMap.getPath());
-    addItem(e);
+    Spawner *enemySpawner = new Spawner(this);
+    QTimer *spawnTimer = new QTimer();
+    QObject::connect(spawnTimer, SIGNAL(timeout()), enemySpawner, SLOT(spawnEnemy()));
+    spawnTimer->start(2000);
 
-    QTimer *t = new QTimer();
-    QObject::connect(t, SIGNAL(timeout()), this, SLOT(advance()));
-    t->start(50);
+    QTimer *moveTimer = new QTimer();
+    QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
+    moveTimer->start(50);
 }
 
 Map Game::getMap() const
