@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     map.cpp \
     enemy.cpp \
     tower.cpp \
-    projectile.cpp
+    projectile.cpp \
+    spawner.cpp
 
 HEADERS  += \
     tile.h \
@@ -36,7 +37,8 @@ HEADERS  += \
     enemy.h \
     map.h \
     tower.h \
-    projectile.h
+    projectile.h \
+    spawner.h
 
 RESOURCES += \
     resources.qrc
