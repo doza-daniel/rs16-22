@@ -4,6 +4,8 @@
 #include <qmath.h>
 #include <QDebug>
 #include <QTransform>
+#include "enemy.h"
+#include <QList>
 
 Projectile::Projectile(QGraphicsItem *parent)
 {
@@ -30,4 +32,23 @@ void Projectile::move()
 
     //move the proejctile accordingly
     setPos(x()+dx, y()+dy);
+
+    //get the collisions and destory any enemies that are in contact with the projectile
+    checkForHit();
+}
+
+void Projectile::checkForHit()
+{
+    //get all the coliding items and if it's an enemy delete it and the projectile
+    QList<QGraphicsItem*> colidingItems = this->collidingItems();
+    for(auto &e:colidingItems){
+        Enemy* tmp = dynamic_cast<Enemy*>(e);
+        if(tmp){
+            //check the center of enemy to center of bullet
+            if(e->mapToScene(e->boundingRect()).contains(e->mapToScene(e->boundingRect().center()))){
+                delete tmp;
+                delete this;
+            }
+        }
+    }
 }
