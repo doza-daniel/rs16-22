@@ -54,7 +54,9 @@ void Tower::attackTarget(Enemy *target)
 {   
     //create a projectile
     Projectile* bullet = new Projectile(target);
-    bullet->setPos(x() + HALF_BULLET + TILE_DIM / 2, y() + HALF_BULLET + TILE_DIM / 2);
+    int a = x() - (bullet->getDimension() / 2) + TILE_DIM / 2;
+    int b = y() - (bullet->getDimension() / 2) + TILE_DIM / 2;
+    bullet->setPos(QPointF(a, b));
 
     //create a line from which we can withdraw the angle
     QLineF movingLine(QPointF(x() + TILE_DIM / 2, y() + TILE_DIM / 2), mAttackDest);

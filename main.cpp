@@ -10,6 +10,7 @@
 #include "game.h"
 #include "map.h"
 #include "tower.h"
+#include "projectile.h"
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +28,8 @@ int main(int argc, char *argv[])
         game.addItem(t);
         delete tmp;
     }
+
+
     game.show();
 
 
