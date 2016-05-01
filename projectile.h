@@ -15,8 +15,9 @@ public:
 public slots:
     void move();
 private:
+     QGraphicsItem *mParent;
      int mShootingSpeed = 10;
-     int mProjectileSpeed = 2;
+     int mProjectileSpeed = 1;
      void checkForHit();
 };
 

@@ -17,11 +17,11 @@ Game::Game(const QRectF &sceneRect, QObject *parent)
     Spawner *enemySpawner = new Spawner(this);
     QTimer *spawnTimer = new QTimer();
     QObject::connect(spawnTimer, SIGNAL(timeout()), enemySpawner, SLOT(spawnEnemy()));
-    spawnTimer->start(2000);
+    spawnTimer->start(SPAWN_TIME);
 
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
-    moveTimer->start(50);
+    moveTimer->start(MOVEMENT_SPEED);
 }
 
 Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
@@ -35,11 +35,11 @@ Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
     Spawner *enemySpawner = new Spawner(this);
     QTimer *spawnTimer = new QTimer();
     QObject::connect(spawnTimer, SIGNAL(timeout()), enemySpawner, SLOT(spawnEnemy()));
-    spawnTimer->start(500);
+    spawnTimer->start(SPAWN_TIME);
 
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
-    moveTimer->start(50);
+    moveTimer->start(MOVEMENT_SPEED);
 }
 
 Map Game::getMap() const

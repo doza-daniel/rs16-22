@@ -5,9 +5,11 @@
 #include <QDebug>
 #include <QTransform>
 #include "enemy.h"
+#include "tower.h"
 #include <QList>
 
 Projectile::Projectile(QGraphicsItem *parent)
+    : mParent(parent)
 {
     //sets the image of the projectile and scales it accordingly
     setPixmap(QPixmap(":/map/images/tower/bullet.png"));
@@ -19,6 +21,7 @@ Projectile::Projectile(QGraphicsItem *parent)
     moveTimer->start(mShootingSpeed);
 
 }
+
 
 /*Used periodically to move the item in the correct posititon*/
 void Projectile::move()
@@ -35,6 +38,8 @@ void Projectile::move()
 
     //get the collisions and destory any enemies that are in contact with the projectile
     checkForHit();
+
+    // implement a check if bullet is out of bounds, and delete it
 }
 
 void Projectile::checkForHit()
