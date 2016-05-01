@@ -1,6 +1,7 @@
 #ifndef TOWER_H
 #define TOWER_H
 #include "towertile.h"
+#include "enemy.h"
 #include <QGraphicsPolygonItem>
 #include <QGraphicsScene>
 #include <QObject>
@@ -22,7 +23,7 @@ private:
     bool mTargetAcquired;
     QGraphicsPolygonItem* createPolygon();
     double distanceToItem(QGraphicsItem* item);
-    void attackTarget();
+    void attackTarget(Enemy *target);
     void centerPolygon();
     double HALF_BULLET = 12.5;
 };

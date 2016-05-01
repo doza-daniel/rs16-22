@@ -19,8 +19,6 @@ public:
     void showMap();
     void show();
 
-    /*Pavle's test*/
-    void mousePressEvent(QGraphicsSceneMouseEvent* e) Q_DECL_OVERRIDE;
 
 private:
     void initView();

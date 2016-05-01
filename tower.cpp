@@ -50,10 +50,10 @@ QGraphicsPolygonItem *Tower::getAttackArea() const
     return mAttackArea;
 }
 
-void Tower::attackTarget()
+void Tower::attackTarget(Enemy *target)
 {   
     //create a projectile
-    Projectile* bullet = new Projectile();
+    Projectile* bullet = new Projectile(target);
     bullet->setPos(x() + HALF_BULLET + TILE_DIM / 2, y() + HALF_BULLET + TILE_DIM / 2);
 
     //create a line from which we can withdraw the angle
@@ -83,6 +83,7 @@ void Tower::acquireTarget()
     //we need closest enemy and its point
     double closestDistance = 1000;
     QPointF closestPoint = QPointF(0, 0);
+    Enemy *target = nullptr;
 
     //there are collisions, check if enemy is coliding
     for(auto &e:colidingItems){
@@ -93,6 +94,7 @@ void Tower::acquireTarget()
             if(distanceTo < closestDistance){ //if there is a closer enemy
                 closestDistance = distanceTo; // new closest
                 closestPoint = e->mapToScene(e->boundingRect().center()); // get the Point of the closest enemy
+                target = tmp;
                 mTargetAcquired = true;
             }
         }
@@ -102,7 +104,7 @@ void Tower::acquireTarget()
     mAttackDest = closestPoint;
     //now attack that target
     if(mTargetAcquired)
-        attackTarget();
+        attackTarget(target);
 
 }
 

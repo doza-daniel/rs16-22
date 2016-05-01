@@ -57,14 +57,6 @@ void Game::showMap()
     }
 }
 
-/*Pavle's test*/
-void Game::mousePressEvent(QGraphicsSceneMouseEvent* e)
-{
-    Projectile* bullet = new Projectile();
-    bullet->setPos(bullet->mapToScene(e->pos()));
-    this->addItem(bullet);
-}
-
 void Game::show()
 {
     mView.show();
