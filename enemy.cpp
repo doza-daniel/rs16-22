@@ -2,6 +2,8 @@
 #include <QtMath>
 #include <QLineF>
 
+const int MOVEMENT_SPEED = 50;
+
 Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
     : mPath(path),
       mWaypoint(0),

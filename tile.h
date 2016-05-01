@@ -1,14 +1,14 @@
 #ifndef TILE_H
 #define TILE_H
 
-#define TILE_DIM 50
-
 #include <QGraphicsItem>
 #include <QRectF>
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include <QPointF>
+
+extern const int TILE_DIM;
 
 enum class TileType {
     Grass = 0,
