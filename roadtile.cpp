@@ -7,11 +7,6 @@ RoadTile::RoadTile(RoadTileType type, int dim, int x, int y)
     mType = TileType::Road;
 }
 
-QRectF RoadTile::boundingRect() const
-{
-    return mTile;
-}
-
 void RoadTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QColor grass(51, 204, 51);

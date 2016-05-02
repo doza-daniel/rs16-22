@@ -1,10 +1,18 @@
 #include "tile.h"
+#include <QTime>
+#include <QDebug>
 
 const int TILE_DIM = 50;
+
 Tile::Tile(int dim, int x, int y)
     : mTile(QRectF(0, 0, dim, dim)), mCenter(mTile.center())
 {
     setPos(x, y);
+}
+
+QRectF Tile::boundingRect() const
+{
+    return mTile;
 }
 
 void Tile::rotate(qreal angle)
@@ -18,7 +26,7 @@ void Tile::rotate(qreal angle)
 
 QPointF Tile::getCenter() const
 {
-    return mCenter;
+    return mTile.center();
 }
 
 TileType Tile::getTileType() const

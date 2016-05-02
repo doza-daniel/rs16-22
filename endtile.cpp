@@ -7,11 +7,6 @@ EndTile::EndTile(int dim, int x, int y)
     mType = TileType::End;
 }
 
-QRectF EndTile::boundingRect() const
-{
-    return mTile;
-}
-
 void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QColor clr(204, 0, 51);

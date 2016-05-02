@@ -6,11 +6,6 @@ TowerTile::TowerTile(int dim, int x, int y)
     mType = TileType::Tower;
 }
 
-QRectF TowerTile::boundingRect() const
-{
-    return mTile;
-}
-
 void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QColor grass(51, 204, 51);
