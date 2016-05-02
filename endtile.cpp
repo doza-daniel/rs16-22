@@ -1,5 +1,6 @@
 #include "endtile.h"
 #include "enemy.h"
+#include <cstdlib>
 
 EndTile::EndTile(int dim, int x, int y)
     : Tile(dim, x, y)
@@ -33,8 +34,13 @@ void EndTile::advance(int)
     QList<QGraphicsItem*> items = this->collidingItems();
     for(int i = 0; i < items.size(); i++) {
         Enemy *e = dynamic_cast<Enemy *>(items[i]);
-        if(e)
+        if(e){
             delete e;
+            mLivesLeft--;
+        }
+        if(mLivesLeft <= 0){
+            exit(EXIT_SUCCESS);
+        }
     }
 }
 
