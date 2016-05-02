@@ -24,7 +24,6 @@ private:
     double distanceToItem(QGraphicsItem* item);
     void attackTarget(Enemy *target);
     void centerPolygon();
-    double HALF_BULLET = 12.5;
 };
 
 #endif // TOWER_H
