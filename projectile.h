@@ -29,8 +29,8 @@ private:
      QPointF mTip;
      int mDimension;
      QTimer mMoveTimer;
-     int mShootingSpeed = 5;
-     int mProjectileSpeed = 1;
+     int mShootingSpeed = 7;
+     int mProjectileSpeed = 3;
      void checkForHit();
 };
 
