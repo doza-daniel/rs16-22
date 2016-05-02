@@ -10,7 +10,7 @@
 #include <QPainterPath>
 #include "enemy.h"
 
-class Projectile: public QObject, public QGraphicsPixmapItem{
+class Projectile: public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Projectile(Enemy* target, int dim = TILE_DIM / 4);
@@ -28,7 +28,7 @@ private:
      QPointF mTip;
      int mDimension;
      QTimer mMoveTimer;
-     int mShootingSpeed = 10;
+     int mShootingSpeed = 5;
      int mProjectileSpeed = 1;
      void checkForHit();
 };

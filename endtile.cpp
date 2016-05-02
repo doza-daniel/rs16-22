@@ -1,4 +1,5 @@
 #include "endtile.h"
+#include "enemy.h"
 
 EndTile::EndTile(int dim, int x, int y)
     : Tile(dim, x, y)
@@ -35,7 +36,11 @@ QPainterPath EndTile::shape() const
 void EndTile::advance(int)
 {
     QList<QGraphicsItem*> items = this->collidingItems();
-    for(int i = 0; i < items.size(); i++)
-        delete items[i];
+    for(int i = 0; i < items.size(); i++) {
+        Enemy *e = dynamic_cast<Enemy *>(items[i]);
+        if(e)
+            delete e;
+    }
+
 }
 

@@ -21,7 +21,6 @@ Projectile::Projectile(Enemy *target, int dim)
     connect(&mMoveTimer, SIGNAL(timeout()), this,  SLOT(move()));
     //set the periodic calls to be equal to shootingSpeed
     mMoveTimer.start(mShootingSpeed);
-
 }
 
 int Projectile::getDimension() const
@@ -62,7 +61,7 @@ void Projectile::move()
     // ovde bi trebalo prvo + pa - ali onda baguje, ne znam sto
     QTransform m;
     m.translate(-mDimension / 2, +mDimension / 2);
-    m.rotate(angle);
+    m.rotate(angle + 180);
     m.translate(mDimension / 2, mDimension / 2);
     setTransform(m);
 
