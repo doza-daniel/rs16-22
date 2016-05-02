@@ -14,7 +14,6 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
 
 Enemy::~Enemy()
 {
-
 }
 
 QRectF Enemy::boundingRect() const

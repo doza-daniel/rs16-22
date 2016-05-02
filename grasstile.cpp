@@ -6,10 +6,6 @@ GrassTile::GrassTile(int dim, int x, int y)
     mType = TileType::Grass;
 }
 
-QRectF GrassTile::boundingRect() const
-{
-    return mTile;
-}
 
 void GrassTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {

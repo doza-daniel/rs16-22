@@ -3,7 +3,6 @@
 #include "towertile.h"
 #include "enemy.h"
 #include <QGraphicsPolygonItem>
-#include <QGraphicsScene>
 #include <QObject>
 
 class Tower: public QObject, public TowerTile{
@@ -18,14 +17,13 @@ public slots:
 private:
     QGraphicsPolygonItem* mAttackArea;
     QPointF mAttackDest;
-    QGraphicsScene &mGame;
     int mAttackSpeed = 1000;
     bool mTargetAcquired;
+    double mPolygonScale = 1.5;
     QGraphicsPolygonItem* createPolygon();
     double distanceToItem(QGraphicsItem* item);
     void attackTarget(Enemy *target);
     void centerPolygon();
-    double HALF_BULLET = 12.5;
 };
 
 #endif // TOWER_H

@@ -12,8 +12,7 @@
 
 Tower::Tower(int x, int y, QGraphicsScene &game)
     : QObject(),
-      TowerTile(TILE_DIM, x, y),
-      mGame(game),
+      TowerTile(game, TILE_DIM, x, y),
       mTargetAcquired(false)
 {
     mAttackArea = createPolygon();
@@ -120,8 +119,7 @@ QGraphicsPolygonItem* Tower::createPolygon(){
 
     //sacale to tile
     for(auto &p:polyPts){
-        // daniel: added a bit more scaling to see if it works. should also be deleted from centerPolygon()
-        p = p * TILE_DIM * 1.5;
+        p = p * TILE_DIM * mPolygonScale;
     }
 
     //create scaled polygon
@@ -143,8 +141,7 @@ void Tower::centerPolygon(){
     QPointF polyCenter(1.5, 1.5);
 
     //scale the center point to fit the tile
-    //daniel: added scaling, should also be deleted from createPolygon()
-    polyCenter *= TILE_DIM * 1.5;
+    polyCenter *= TILE_DIM * mPolygonScale;
 
     //get the coordinates to be determined by the scene
     polyCenter = mapToScene(polyCenter);

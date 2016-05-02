@@ -23,8 +23,9 @@ public:
 
 public slots:
     void move();
+    void targetDestroyed();
 private:
-     Enemy *mTarget;
+     const Enemy *mTarget;
      QPointF mTip;
      int mDimension;
      QTimer mMoveTimer;

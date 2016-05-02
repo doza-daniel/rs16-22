@@ -6,11 +6,6 @@ StartTile::StartTile(int dim, int x, int y)
     mType = TileType::Start;
 }
 
-QRectF StartTile::boundingRect() const
-{
-    return mTile;
-}
-
 void StartTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     QColor clr(0, 153, 255);
