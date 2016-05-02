@@ -4,6 +4,7 @@
 #include "enemy.h"
 #include <QGraphicsPolygonItem>
 #include <QObject>
+#include <QGraphicsScene>
 
 class Tower: public QObject, public TowerTile{
     Q_OBJECT
@@ -20,6 +21,7 @@ private:
     int mAttackSpeed = 1000;
     bool mTargetAcquired;
     double mPolygonScale = 1.5;
+    QGraphicsScene &mGame;
     QGraphicsPolygonItem* createPolygon();
     double distanceToItem(QGraphicsItem* item);
     void attackTarget(Enemy *target);

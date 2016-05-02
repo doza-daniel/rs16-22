@@ -1,11 +1,11 @@
 #include "towertile.h"
-#include <QPointF>
 #include "tower.h"
 
-TowerTile::TowerTile(QGraphicsScene &game,int dim, int x, int y)
-    : Tile(dim, x, y),mGame(game)
+TowerTile::TowerTile(int dim, int x, int y)
+    : Tile(dim, x, y)
 {
     mType = TileType::Tower;
+    setZValue(1100);
 }
 
 void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
@@ -22,11 +22,3 @@ void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidg
     painter->drawEllipse(mCenter, TILE_DIM - 35, TILE_DIM - 35);
 }
 
-/*When pressed, attempts to build a real Tower*/
-void TowerTile::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    QPointF pos = this->pos();
-    auto t = new Tower(pos.x(),pos.y(),mGame);
-    mGame.addItem(t);
-    delete this;
-}

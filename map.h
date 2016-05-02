@@ -13,7 +13,7 @@ extern QVector<QString> levelList;
 class Map
 {
 public:
-    Map(QGraphicsScene &game,int rows, int cols, int level = 1);
+    Map(int rows, int cols, int level = 1);
     QVector<QPointF *> getPath() const;
     QVector< QVector<Tile *> > getMap() const;
     QVector<Tile *> getTowers() const;
@@ -31,7 +31,6 @@ private:
     QVector< QVector<Tile *> > mMap;
     QVector<QPointF *> mPath;
     QVector<Tile *> mTowers;
-    QGraphicsScene &mGame;
 
 
     enum class Direction {

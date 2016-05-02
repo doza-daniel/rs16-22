@@ -15,14 +15,13 @@ QVector<QString> levelList = {
     QString(":/map/levels/01.txt")
 };
 
-Map::Map(QGraphicsScene &game, int rows, int cols, int level)
+Map::Map(int rows, int cols, int level)
     : mRows(rows),
       mCols(cols),
       mLevel(level),
       mMap(rows, QVector<Tile *>(cols)),
       mPath(),
-      mTowers(),
-      mGame(game)
+      mTowers()
 {
     mStart = nullptr;
     mEnd = nullptr;
@@ -50,7 +49,7 @@ void Map::loadMap()
                 newTile = new GrassTile(TILE_DIM, j * TILE_DIM, i * TILE_DIM);
                 break;
             case TileType::Tower:
-                newTile = new TowerTile(mGame, TILE_DIM, j * TILE_DIM, i * TILE_DIM);
+                newTile = new TowerTile(TILE_DIM, j * TILE_DIM, i * TILE_DIM);
                 mTowers.push_back(newTile);
                 break;
             case TileType::Start:

@@ -12,10 +12,13 @@
 
 Tower::Tower(int x, int y, QGraphicsScene &game)
     : QObject(),
-      TowerTile(game, TILE_DIM, x, y),
+      TowerTile(TILE_DIM, x, y),
+      mGame(game),
       mTargetAcquired(false)
 {
     mAttackArea = createPolygon();
+    mAttackArea->setZValue(900);
+    setZValue(1000);
 
     centerPolygon();
 
@@ -126,7 +129,9 @@ QGraphicsPolygonItem* Tower::createPolygon(){
     QPolygonF polygon(polyPts);
 
     //this <- represents the parent so that polygon knows where to draw itself
-    return new QGraphicsPolygonItem(polygon, this);
+    QGraphicsPolygonItem *poly = new QGraphicsPolygonItem(polygon, this);
+    return poly;
+
 }
 
 /*Returns double, the distance between an item and the tower */

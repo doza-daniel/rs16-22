@@ -7,6 +7,9 @@
 #include <QGraphicsSceneMouseEvent>
 #include "map.h"
 #include "enemy.h"
+#include "tower.h"
+#include "towertile.h"
+#include <QPointF>
 
 extern const int WAVE_SPAWN_TIME;
 
@@ -21,6 +24,7 @@ public:
     void show();
     void setWaveSpawnTime(int n);
     int getWaveSpawnTime() const;
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 private:
     void initView();
