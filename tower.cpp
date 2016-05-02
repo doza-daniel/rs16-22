@@ -12,8 +12,7 @@
 
 Tower::Tower(int x, int y, QGraphicsScene &game)
     : QObject(),
-      TowerTile(TILE_DIM, x, y),
-      mGame(game),
+      TowerTile(game, TILE_DIM, x, y),
       mTargetAcquired(false)
 {
     mAttackArea = createPolygon();

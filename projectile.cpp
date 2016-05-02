@@ -22,7 +22,9 @@ Projectile::Projectile(Enemy *target, int dim)
     //set the periodic calls to be equal to shootingSpeed
     mMoveTimer.start(mShootingSpeed);
 
-    connect(mTarget, SIGNAL(destroyed()), this, SLOT(targetDestroyed()));
+    //if there is a target, catch it's destroy signal
+    if(target)
+        connect(mTarget, SIGNAL(destroyed()), this, SLOT(targetDestroyed()));
 }
 
 int Projectile::getDimension() const

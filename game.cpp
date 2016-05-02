@@ -9,7 +9,7 @@
 Game::Game(const QRectF &sceneRect, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
       mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM)
+      mMap(*this,this->height() / TILE_DIM, this->width() / TILE_DIM)
 {
     initView();
     showMap();
@@ -27,7 +27,7 @@ Game::Game(const QRectF &sceneRect, QObject *parent)
 Game::Game(qreal x, qreal y, qreal width, qreal height, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
       mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM)
+      mMap(*this, this->height() / TILE_DIM, this->width() / TILE_DIM)
 {
     initView();
     showMap();
