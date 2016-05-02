@@ -14,6 +14,7 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
 
 Enemy::~Enemy()
 {
+
 }
 
 QRectF Enemy::boundingRect() const
@@ -37,6 +38,17 @@ QPainterPath Enemy::shape() const
     QPainterPath path;
     path.addEllipse(getCenter(), 8, 5);
     return path;
+}
+
+/*Sets the health of the enemy*/
+void Enemy::setHealth(int health)
+{
+    mHealth = health;
+}
+/*Gets the health of the enemy*/
+int Enemy::getHealth()
+{
+    return mHealth;
 }
 
 void Enemy::advance(int)

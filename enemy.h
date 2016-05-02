@@ -18,14 +18,16 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
     QPointF getCenter() const;
     QPainterPath shape() const Q_DECL_OVERRIDE;
+    void setHealth(int health);
+    int getHealth();
 protected slots:
     void advance(int phase) Q_DECL_OVERRIDE;
-
 private:
     QVector<QPointF *> mPath;
     int mWaypoint;
     int mDimension;
     QPointF mCenter;
+    int mHealth = 3;
 };
 
 #endif // ENEMY_H

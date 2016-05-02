@@ -32,6 +32,11 @@ int Projectile::getDimension() const
     return mDimension;
 }
 
+void Projectile::setAttackPower(int attackPower)
+{
+    mAttackPower = attackPower;
+}
+
 void Projectile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
     QGraphicsPixmapItem::paint(painter, option, w);
@@ -85,10 +90,18 @@ void Projectile::move()
     checkForHit();
 }
 
+/*Checks for the projectile and enemy collision and adjusts the health of the target that was hit*/
 void Projectile::checkForHit()
 {
     if(collidesWithItem(mTarget)) {
-        delete mTarget;
+        int currHealth = mTarget->getHealth();
+        currHealth -= mAttackPower;
+        if(currHealth <= 0){
+            delete mTarget;
+        }
+        else{
+            mTarget->setHealth(currHealth);
+        }
         delete this;
     }
 }
