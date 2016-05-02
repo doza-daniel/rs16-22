@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <iostream>
+#include "projectile.h"
 
 
 Game::Game(const QRectF &sceneRect, QObject *parent)

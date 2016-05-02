@@ -2,7 +2,7 @@
 #include "game.h"
 #include <QDebug>
 
-const int SPAWN_TIME = 1000;
+const int SPAWN_TIME = 500;
 
 Spawner::Spawner(Game *game)
     :mGame(game)
