@@ -3,13 +3,15 @@
 #include <cstdlib>
 
 EndTile::EndTile(int dim, int x, int y)
-    : Tile(dim, x, y)
+    : Tile(QPixmap(":/map/images/tile/end.jpg"), dim, x, y)
 {
     mType = TileType::End;
 }
 
-void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
+    QGraphicsPixmapItem::paint(painter, option, w);
+    /*
     QColor clr(204, 0, 51);
 
     painter->setBrush(clr);
@@ -20,6 +22,7 @@ void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget
     painter->setBrush(Qt::black);
     painter->setPen(QPen());
     painter->drawText(QPointF(15, 30), QString("END"));
+    */
 }
 
 QPainterPath EndTile::shape() const

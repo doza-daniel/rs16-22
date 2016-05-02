@@ -4,9 +4,10 @@
 
 const int TILE_DIM = 50;
 
-Tile::Tile(int dim, int x, int y)
+Tile::Tile(QPixmap pic, int dim, int x, int y)
     : mTile(QRectF(0, 0, dim, dim)), mCenter(mTile.center())
 {
+    setPixmap(pic);
     setPos(x, y);
 }
 

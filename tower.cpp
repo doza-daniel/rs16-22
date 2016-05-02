@@ -12,7 +12,7 @@
 
 Tower::Tower(int x, int y, QGraphicsScene &game)
     : QObject(),
-      TowerTile(TILE_DIM, x, y),
+      Tile(QPixmap(":/map/images/tower/tower_active.jpg"), TILE_DIM, x, y),
       mGame(game),
       mTargetAcquired(false)
 {
@@ -24,12 +24,14 @@ Tower::Tower(int x, int y, QGraphicsScene &game)
 
     //test connect timer to attackTarget
     QTimer* timer = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
     timer->start(mAttackSpeed);
 }
 /*Paints the tower tile according to this function*/
-void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
+    QGraphicsPixmapItem::paint(painter, option, w);
+    /*
     QColor grass(51, 204, 51);
     QColor tower(255, 255, 0);
 
@@ -40,6 +42,7 @@ void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *
 
     painter->setBrush(tower);
     painter->drawEllipse(mCenter, TILE_DIM * 30 / 100, TILE_DIM * 30 / 100);
+    */
 }
 
 void Tower::setAttackSpeed(int attackSpeed)

@@ -2,13 +2,15 @@
 #include "tile.h"
 
 RoadTile::RoadTile(RoadTileType type, int dim, int x, int y)
-    : Tile(dim, x, y), mRoadType(type)
+    : Tile(QPixmap(":/map/images/tile/road.jpg"), dim, x, y), mRoadType(type)
 {
     mType = TileType::Road;
 }
 
-void RoadTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void RoadTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
+    QGraphicsPixmapItem::paint(painter, option, w);
+    /*
     QColor grass(51, 204, 51);
     QColor road(224, 224, 224);
 
@@ -32,4 +34,5 @@ void RoadTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidge
         painter->setBrush(grass);
         painter->drawRect(QRectF(0, 45, 5, 5));
     }
+    */
 }
