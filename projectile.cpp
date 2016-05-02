@@ -21,6 +21,8 @@ Projectile::Projectile(Enemy *target, int dim)
     connect(&mMoveTimer, SIGNAL(timeout()), this,  SLOT(move()));
     //set the periodic calls to be equal to shootingSpeed
     mMoveTimer.start(mShootingSpeed);
+
+    connect(mTarget, SIGNAL(destroyed()), this, SLOT(targetDestroyed()));
 }
 
 int Projectile::getDimension() const
@@ -31,8 +33,8 @@ int Projectile::getDimension() const
 void Projectile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
     QGraphicsPixmapItem::paint(painter, option, w);
-    /*painter->setBrush(Qt::red);
-    painter->drawPath(this->shape());*/
+//    painter->setBrush(Qt::red);
+//    painter->drawPath(this->shape());
 }
 
 QPainterPath Projectile::shape() const
@@ -51,14 +53,17 @@ QPainterPath Projectile::shape() const
 /*Used periodically to move the item in the correct posititon*/
 void Projectile::move()
 {
-    if(mTarget == nullptr) {
+    //check to see if the target isn't destroyed
+    if(!mTarget){
+        delete this;
         return;
     }
+
     QLineF ln(mapToScene(mTip), mTarget->mapToScene(mTarget->getCenter()));
     //gets the current angle of rotation
     double angle = -1 * ln.angle();
 
-    // ovde bi trebalo prvo + pa - ali onda baguje, ne znam sto
+    //transformation for the angle of the bullet
     QTransform m;
     m.translate(-mDimension / 2, +mDimension / 2);
     m.rotate(angle + 180);
@@ -80,10 +85,14 @@ void Projectile::move()
 
 void Projectile::checkForHit()
 {
-    if(!mTarget)
-        return;
     if(collidesWithItem(mTarget)) {
         delete mTarget;
         delete this;
     }
+}
+
+/*Defines what happens to the bullet when the target is destroyed*/
+void Projectile::targetDestroyed()
+{
+    mTarget = nullptr;
 }

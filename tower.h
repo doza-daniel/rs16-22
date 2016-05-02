@@ -21,6 +21,7 @@ private:
     QGraphicsScene &mGame;
     int mAttackSpeed = 1000;
     bool mTargetAcquired;
+    double mPolygonScale = 1.5;
     QGraphicsPolygonItem* createPolygon();
     double distanceToItem(QGraphicsItem* item);
     void attackTarget(Enemy *target);
