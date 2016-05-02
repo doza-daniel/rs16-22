@@ -15,8 +15,11 @@ public:
     Spawner(Game *game);
 public slots:
     void spawnEnemy();
+    void intervalSpawn();
 private:
     Game *mGame;
+    int mEnemiesSpawned;
+    QTimer *mWaveTimer;
 };
 
 #endif // SPAWNER_H
