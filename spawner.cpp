@@ -4,7 +4,7 @@
 #include <QTimer>
 
 const int SPAWN_TIME = 500;
-const int SPAWN_N = 4;
+const int SPAWN_N = 5;
 
 Spawner::Spawner(Game *game)
     :mGame(game), mEnemiesSpawned(0), mWaveTimer(nullptr)
