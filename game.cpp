@@ -10,13 +10,14 @@ const int WAVE_SPAWN_TIME = 5000;
 Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
       mView(this),
-      mWaveSpawnTime(waveSpawnTime),
-      mMap(*this,this->height() / TILE_DIM, this->width() / TILE_DIM)
+      mMap(*this,this->height() / TILE_DIM, this->width() / TILE_DIM),
+      mWaveSpawnTime(waveSpawnTime)
 {
     initView();
     showMap();
 
     Spawner *intervalSpawner = new Spawner(this);
+    intervalSpawner->intervalSpawn();
     QTimer *spawnInterval = new QTimer();
     QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
     spawnInterval->start(mWaveSpawnTime);
@@ -29,17 +30,14 @@ Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
 Game::Game(qreal x, qreal y, qreal width, qreal height, int waveSpawnTime, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
       mView(this),
-<<<<<<< HEAD
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM),
+       mMap(*this, this->height() / TILE_DIM, this->width() / TILE_DIM),
       mWaveSpawnTime(waveSpawnTime)
-=======
-      mMap(*this, this->height() / TILE_DIM, this->width() / TILE_DIM)
->>>>>>> master
 {
     initView();
     showMap();
 
     Spawner *intervalSpawner = new Spawner(this);
+    intervalSpawner->intervalSpawn();
     QTimer *spawnInterval = new QTimer();
     QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
     spawnInterval->start(mWaveSpawnTime);
