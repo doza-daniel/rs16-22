@@ -19,7 +19,7 @@ public:
 private slots:
     void startGame();
     void selectLevel();
-
+    void back();
 private:
     Ui::Dialog *ui;
     Game *mGame;

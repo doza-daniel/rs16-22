@@ -22,6 +22,7 @@ void MainWindow::chooseLevel()
     Dialog *cl = new Dialog();
     OpenDialogWindow = true;
     cl->show();
+    this->close();
 }
 
 void MainWindow::exitGame()

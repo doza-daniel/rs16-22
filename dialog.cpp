@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "mainwindow.h"
 #include <QDebug>
 
 Dialog::Dialog(QWidget *parent) :
@@ -24,6 +25,7 @@ void Dialog::startGame()
     mGame = new Game(0, 0, 1000, 800, mLevelNum);
     mGameStarted = true;
     mGame->show();
+    this->close();
 }
 
 void Dialog::selectLevel()
@@ -34,4 +36,11 @@ void Dialog::selectLevel()
         mLevelNum = 2;
     else
         mLevelNum = 3;
+}
+
+void Dialog::back()
+{
+    MainWindow *w = new MainWindow();
+    w->show();
+    this->close();
 }

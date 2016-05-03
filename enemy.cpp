@@ -10,6 +10,7 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
       mDimension(dim)
 {
     setPos(x, y);
+    setPixmap(QPixmap(":/map/images/enemy/bee.png"));
 }
 
 Enemy::~Enemy()
@@ -20,12 +21,6 @@ Enemy::~Enemy()
 QRectF Enemy::boundingRect() const
 {
     return QRectF(0, 0, mDimension, mDimension);
-}
-
-void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
-{
-    painter->setBrush(Qt::black);
-    painter->drawEllipse(getCenter().x() - 10, getCenter().y() - 5, 20, 10);
 }
 
 QPointF Enemy::getCenter() const
