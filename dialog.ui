@@ -83,51 +83,6 @@
      <string notr="true">background-image: url(:/map/images/main menu/natureMain.jpg);</string>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>361</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-      <widget class="QRadioButton" name="rb1">
-       <property name="styleSheet">
-        <string notr="true">font: 24pt &quot;Futura&quot;;
-color:#4b3e10;</string>
-       </property>
-       <property name="text">
-        <string>1</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-      <widget class="QRadioButton" name="rb2">
-       <property name="styleSheet">
-        <string notr="true">font: 24pt &quot;Futura&quot;;
-color:#4b3e10;</string>
-       </property>
-       <property name="text">
-        <string>2</string>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignHCenter|Qt::AlignTop">
-      <widget class="QRadioButton" name="rb3">
-       <property name="styleSheet">
-        <string notr="true">font: 24pt &quot;Futura&quot;;
-color:#4b3e10;</string>
-       </property>
-       <property name="text">
-        <string>3</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -168,58 +123,102 @@ color:#4b3e10;
      <string>START</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>113</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 24pt &quot;Futura&quot;;
+background-color:rgba(255, 255, 255, 150);
+color:#4b3e10;
+
+</string>
+    </property>
+    <property name="text">
+     <string>BACK</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>150</y>
+      <width>40</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 24pt &quot;Futura&quot;;
+color:#4b3e10;</string>
+    </property>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>150</y>
+      <width>360</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 24pt &quot;Futura&quot;;
+color:#4b3e10;</string>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rb1">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>150</y>
+      <width>360</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 24pt &quot;Futura&quot;;
+color:#4b3e10;</string>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>411</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(128, 128, 128, 102);</string>
+    </property>
+   </widget>
+   <zorder>graphicsView</zorder>
+   <zorder>label</zorder>
+   <zorder>playButton</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>graphicsView_2</zorder>
+   <zorder>rb1</zorder>
+   <zorder>rb2</zorder>
+   <zorder>rb3</zorder>
   </widget>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>rb1</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>selectLevel()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>214</x>
-     <y>146</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>266</x>
-     <y>434</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>rb2</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>selectLevel()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>213</x>
-     <y>228</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-16</x>
-     <y>349</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>rb3</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>selectLevel()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>222</x>
-     <y>329</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-4</x>
-     <y>271</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>playButton</sender>
    <signal>clicked()</signal>
@@ -236,9 +235,74 @@ color:#4b3e10;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>rb1</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>selectLevel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>266</x>
+     <y>434</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rb2</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>selectLevel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-16</x>
+     <y>349</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rb3</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>selectLevel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-4</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dialog</receiver>
+   <slot>back()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>47</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-3</x>
+     <y>321</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>selectLevel()</slot>
   <slot>startGame()</slot>
+  <slot>back()</slot>
  </slots>
 </ui>

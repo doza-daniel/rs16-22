@@ -11,5 +11,6 @@
         <file>map/images/main menu/natureMain.jpg</file>
         <file>map/levels/02.txt</file>
         <file>map/levels/03.txt</file>
+        <file>map/images/enemy/bee.png</file>
     </qresource>
 </RCC>
