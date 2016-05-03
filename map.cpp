@@ -12,7 +12,9 @@
 #include "towertile.h"
 
 QVector<QString> levelList = {
-    QString(":/map/levels/01.txt")
+    QString(":/map/levels/01.txt"),
+    QString(":/map/levels/02.txt"),
+    QString(":/map/levels/03.txt")
 };
 
 Map::Map(int rows, int cols, int level)

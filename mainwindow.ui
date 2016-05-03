@@ -88,13 +88,10 @@
 background-color:rgba(255, 255, 255, 100);
 color:#4b3e10;
 
-hover {
-background-color: black;
-}
 </string>
        </property>
        <property name="text">
-        <string>START</string>
+        <string>PLAY</string>
        </property>
       </widget>
      </item>
@@ -173,7 +170,7 @@ color:#4b3e10;</string>
    <sender>startButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>startGame()</slot>
+   <slot>chooseLevel()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>426</x>
@@ -205,5 +202,6 @@ color:#4b3e10;</string>
  <slots>
   <slot>startGame()</slot>
   <slot>exitGame()</slot>
+  <slot>chooseLevel()</slot>
  </slots>
 </ui>

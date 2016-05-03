@@ -16,8 +16,8 @@ extern const int WAVE_SPAWN_TIME;
 class Game : public QGraphicsScene
 {
 public:
-    Game(const QRectF & sceneRect, int waveSpawnTime = WAVE_SPAWN_TIME, QObject * parent = 0);
-    Game(qreal x, qreal y, qreal width, qreal height, int waveSpawnTime = WAVE_SPAWN_TIME, QObject * parent = 0);
+    Game(const QRectF & sceneRect, int level = 1, int waveSpawnTime = WAVE_SPAWN_TIME, QObject * parent = 0);
+    Game(qreal x, qreal y, qreal width, qreal height, int level = 1, int waveSpawnTime = WAVE_SPAWN_TIME,  QObject * parent = 0);
 
     Map getMap() const;
     void showMap();

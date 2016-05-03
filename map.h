@@ -6,8 +6,6 @@
 #include <QPointF>
 #include <QGraphicsScene>
 
-
-
 extern QVector<QString> levelList;
 
 class Map

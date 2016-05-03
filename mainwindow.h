@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "game.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,13 +16,12 @@ public:
     ~MainWindow();
 
 private slots:
-    void startGame();
+    void chooseLevel();
     void exitGame();
 
 private:
     Ui::MainWindow *ui;
-    Game *mGame;
-    bool mGameStarted;
+    bool OpenDialogWindow;
 };
 
 #endif // MAINWINDOW_H

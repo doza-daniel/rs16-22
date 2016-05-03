@@ -12,6 +12,7 @@
 #include "tower.h"
 #include "projectile.h"
 #include "mainwindow.h"
+#include "dialog.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,7 +30,6 @@ int main(int argc, char *argv[])
 //        game.addItem(t);
 //        delete tmp;
 //    }
-
 
 //    game.show();
 

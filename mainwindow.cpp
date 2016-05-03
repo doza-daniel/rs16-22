@@ -1,13 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "game.h"
-#include <QDebug>
+#include "dialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    mGame(nullptr),
-    mGameStarted(false)
+    OpenDialogWindow(false)
 {
     ui->setupUi(this);
 }
@@ -17,14 +15,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::startGame()
+void MainWindow::chooseLevel()
 {
-    if(mGameStarted)
+    if(OpenDialogWindow)
         return;
-    mGame = new Game(0, 0, 1000, 800);
-    mGameStarted = true;
-    qDebug() << "start clicked";
-    mGame->show();
+    Dialog *cl = new Dialog();
+    OpenDialogWindow = true;
+    cl->show();
 }
 
 void MainWindow::exitGame()

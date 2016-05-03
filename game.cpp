@@ -11,10 +11,10 @@
 
 const int WAVE_SPAWN_TIME = 5000;
 
-Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
+Game::Game(const QRectF &sceneRect, int level, int waveSpawnTime, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
       mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM),
+      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level),
       mWaveSpawnTime(waveSpawnTime)
 {
     initView();
@@ -31,10 +31,10 @@ Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
     moveTimer->start(MOVEMENT_SPEED);
 }
 
-Game::Game(qreal x, qreal y, qreal width, qreal height, int waveSpawnTime, QObject *parent)
+Game::Game(qreal x, qreal y, qreal width, qreal height, int level, int waveSpawnTime, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
       mView(this),
-       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM),
+       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level),
       mWaveSpawnTime(waveSpawnTime)
 {
     initView();

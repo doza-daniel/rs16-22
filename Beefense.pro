@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     tower.cpp \
     projectile.cpp \
     spawner.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    dialog.cpp
 
 HEADERS  += \
     tile.h \
@@ -40,10 +41,12 @@ HEADERS  += \
     tower.h \
     projectile.h \
     spawner.h \
-    mainwindow.h
+    mainwindow.h \
+    dialog.h
 
 RESOURCES += \
     resources.qrc
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    dialog.ui
