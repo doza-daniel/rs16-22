@@ -89,7 +89,7 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
         TowerTile *t = dynamic_cast<TowerTile*>(tmp);
         if(t){
             QPointF pos = t->pos();
-            auto twr = new Tower(pos.x(),pos.y(),*this);
+            auto twr = new TowerActive(pos.x(),pos.y(),*this);
             this->addItem(twr);
             delete t;
         }

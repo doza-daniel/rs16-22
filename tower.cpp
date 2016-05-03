@@ -10,7 +10,7 @@
 #include "projectile.h"
 #include "enemy.h"
 
-Tower::Tower(int x, int y, QGraphicsScene &game)
+TowerActive::TowerActive(int x, int y, QGraphicsScene &game)
     : QObject(),
       Tile(QPixmap(":/map/images/tower/tower_active.jpg"), TILE_DIM, x, y),
       mGame(game),
@@ -28,7 +28,7 @@ Tower::Tower(int x, int y, QGraphicsScene &game)
     timer->start(mAttackSpeed);
 }
 /*Paints the tower tile according to this function*/
-void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
+void TowerActive::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
     QGraphicsPixmapItem::paint(painter, option, w);
     /*
@@ -45,17 +45,17 @@ void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     */
 }
 
-void Tower::setAttackSpeed(int attackSpeed)
+void TowerActive::setAttackSpeed(int attackSpeed)
 {
     mAttackSpeed = attackSpeed;
 }
 
-QGraphicsPolygonItem *Tower::getAttackArea() const
+QGraphicsPolygonItem *TowerActive::getAttackArea() const
 {
     return mAttackArea;
 }
 
-void Tower::attackTarget(Enemy *target)
+void TowerActive::attackTarget(Enemy *target)
 {   
     //create a projectile
     Projectile* bullet = new Projectile(target);
@@ -75,7 +75,7 @@ void Tower::attackTarget(Enemy *target)
 }
 
 /*Used to detect collision between Enemy and mAttackRange polygon*/
-void Tower::acquireTarget()
+void TowerActive::acquireTarget()
 {
     //get all the coliding items
     QList<QGraphicsItem*> colidingItems = mAttackArea->collidingItems();
@@ -117,7 +117,7 @@ void Tower::acquireTarget()
 
 /*Poitns for attack area (1,0) (2,0) (3,1) (3,2) (1,3) (0,2) (0,1)*/
 /*Points are used in order to create a polygon that represents the tower range*/
-QGraphicsPolygonItem* Tower::createPolygon(){
+QGraphicsPolygonItem* TowerActive::createPolygon(){
 
     QVector<QPointF> polyPts;
     polyPts << QPoint(1, 0)<< QPoint(2, 0)<< QPoint(3, 1)<< QPoint(3, 2)<< QPoint(2, 3)<< QPoint(1, 3)
@@ -138,14 +138,14 @@ QGraphicsPolygonItem* Tower::createPolygon(){
 }
 
 /*Returns double, the distance between an item and the tower */
-double Tower::distanceToItem(QGraphicsItem *item)
+double TowerActive::distanceToItem(QGraphicsItem *item)
 {
     QLineF line(pos(), item->pos());
     return line.length();
 }
 
 /*1.5 is the center of previously defined polygon*/
-void Tower::centerPolygon(){
+void TowerActive::centerPolygon(){
     QPointF polyCenter(1.5, 1.5);
 
     //scale the center point to fit the tile
