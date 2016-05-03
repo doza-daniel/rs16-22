@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     enemy.cpp \
     tower.cpp \
     projectile.cpp \
-    spawner.cpp
+    spawner.cpp \
+    mainwindow.cpp
 
 HEADERS  += \
     tile.h \
@@ -38,9 +39,11 @@ HEADERS  += \
     map.h \
     tower.h \
     projectile.h \
-    spawner.h
+    spawner.h \
+    mainwindow.h
 
 RESOURCES += \
     resources.qrc
 
-FORMS +=
+FORMS += \
+    mainwindow.ui

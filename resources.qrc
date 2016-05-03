@@ -8,5 +8,6 @@
         <file>map/images/tile/start.jpg</file>
         <file>map/images/tower/tower_active.jpg</file>
         <file>map/images/tower/tower_passive.jpg</file>
+        <file>map/images/main menu/natureMain.jpg</file>
     </qresource>
 </RCC>

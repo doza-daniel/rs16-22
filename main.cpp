@@ -11,13 +11,14 @@
 #include "map.h"
 #include "tower.h"
 #include "projectile.h"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
 
-    Game game(0, 0, 1000, 800);
+//    Game game(0, 0, 1000, 800);
 
     /*Pavle's test case*/
 //    QVector<Tile*> towers = game.getMap().getTowers();
@@ -30,8 +31,10 @@ int main(int argc, char *argv[])
 //    }
 
 
-    game.show();
+//    game.show();
 
+    MainWindow w;
+    w.show();
 
 
     return a.exec();
