@@ -4,6 +4,10 @@
 #include <QPainter>
 #include <iostream>
 #include "projectile.h"
+#include <QGraphicsItem>
+#include <QTransform>
+#include <QDebug>
+
 
 const int WAVE_SPAWN_TIME = 5000;
 
@@ -17,6 +21,7 @@ Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
     showMap();
 
     Spawner *intervalSpawner = new Spawner(this);
+    intervalSpawner->intervalSpawn();
     QTimer *spawnInterval = new QTimer();
     QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
     spawnInterval->start(mWaveSpawnTime);
@@ -29,13 +34,14 @@ Game::Game(const QRectF &sceneRect, int waveSpawnTime, QObject *parent)
 Game::Game(qreal x, qreal y, qreal width, qreal height, int waveSpawnTime, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
       mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM),
+       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM),
       mWaveSpawnTime(waveSpawnTime)
 {
     initView();
     showMap();
 
     Spawner *intervalSpawner = new Spawner(this);
+    intervalSpawner->intervalSpawn();
     QTimer *spawnInterval = new QTimer();
     QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
     spawnInterval->start(mWaveSpawnTime);
@@ -73,6 +79,21 @@ void Game::setWaveSpawnTime(int n)
 int Game::getWaveSpawnTime() const
 {
     return mWaveSpawnTime;
+}
+
+void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+//    qDebug() << "CLICKED" << event->scenePos().x() << event->scenePos().y();
+    QGraphicsItem *tmp = itemAt(event->scenePos().x(),event->scenePos().y(),QTransform());
+    if(tmp){
+        TowerTile *t = dynamic_cast<TowerTile*>(tmp);
+        if(t){
+            QPointF pos = t->pos();
+            auto twr = new Tower(pos.x(),pos.y(),*this);
+            this->addItem(twr);
+            delete t;
+        }
+    }
 }
 
 void Game::initView()

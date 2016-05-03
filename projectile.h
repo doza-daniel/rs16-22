@@ -17,12 +17,14 @@ public:
     void setShootingSpeed(int speed);
     void setProjectileSpeed(int speed);
     int getDimension() const;
+    void setAttackPower(int attackPower);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;
 
 public slots:
     void move();
+    void targetDestroyed();
 private:
      Enemy *mTarget;
      QPointF mTip;
@@ -31,6 +33,7 @@ private:
      int mShootingSpeed = 7;
      int mProjectileSpeed = 3;
      void checkForHit();
+     int mAttackPower = 1;
 };
 
 #endif // PROJECTILE_H

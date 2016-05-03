@@ -1,7 +1,7 @@
 #ifndef TILE_H
 #define TILE_H
 
-#include <QGraphicsItem>
+#include <QGraphicsPixmapItem>
 #include <QRectF>
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
@@ -17,12 +17,12 @@ enum class TileType {
     Start = 3,
     End = 4
 };
-class Tile : public QGraphicsItem
+class Tile : public QGraphicsPixmapItem
 {
 public:
-    Tile(int dim = TILE_DIM, int x = 0, int y = 0);
+    Tile(QPixmap pic, int dim = TILE_DIM, int x = 0, int y = 0);
 
-    virtual QRectF boundingRect() const = 0;
+    virtual QRectF boundingRect() const Q_DECL_OVERRIDE;
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w = Q_NULLPTR) = 0;
     TileType getTileType() const;
     void rotate(qreal angle);

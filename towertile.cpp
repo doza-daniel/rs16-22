@@ -1,18 +1,17 @@
 #include "towertile.h"
+#include "tower.h"
 
 TowerTile::TowerTile(int dim, int x, int y)
-    : Tile(dim, x, y)
+    : Tile(QPixmap(":/map/images/tower/tower_passive.jpg"), dim, x, y)
 {
     mType = TileType::Tower;
+    setZValue(1100);
 }
 
-QRectF TowerTile::boundingRect() const
+void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
-    return mTile;
-}
-
-void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
-{
+    QGraphicsPixmapItem::paint(painter, option, w);
+    /*
     QColor grass(51, 204, 51);
     QColor tower(204, 0, 51);
 
@@ -23,4 +22,6 @@ void TowerTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidg
 
     painter->setBrush(tower);
     painter->drawEllipse(mCenter, TILE_DIM - 35, TILE_DIM - 35);
+    */
 }
+

@@ -40,6 +40,17 @@ QPainterPath Enemy::shape() const
     return path;
 }
 
+/*Sets the health of the enemy*/
+void Enemy::setHealth(int health)
+{
+    mHealth = health;
+}
+/*Gets the health of the enemy*/
+int Enemy::getHealth()
+{
+    return mHealth;
+}
+
 void Enemy::advance(int)
 {
     if(mWaypoint >= mPath.size())

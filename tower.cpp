@@ -12,22 +12,26 @@
 
 Tower::Tower(int x, int y, QGraphicsScene &game)
     : QObject(),
-      TowerTile(TILE_DIM, x, y),
+      Tile(QPixmap(":/map/images/tower/tower_active.jpg"), TILE_DIM, x, y),
       mGame(game),
       mTargetAcquired(false)
 {
     mAttackArea = createPolygon();
+    mAttackArea->setZValue(900);
+    setZValue(1000);
 
     centerPolygon();
 
     //test connect timer to attackTarget
     QTimer* timer = new QTimer();
-    connect(timer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
     timer->start(mAttackSpeed);
 }
 /*Paints the tower tile according to this function*/
-void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
+    QGraphicsPixmapItem::paint(painter, option, w);
+    /*
     QColor grass(51, 204, 51);
     QColor tower(255, 255, 0);
 
@@ -38,6 +42,7 @@ void Tower::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *
 
     painter->setBrush(tower);
     painter->drawEllipse(mCenter, TILE_DIM * 30 / 100, TILE_DIM * 30 / 100);
+    */
 }
 
 void Tower::setAttackSpeed(int attackSpeed)
@@ -120,15 +125,16 @@ QGraphicsPolygonItem* Tower::createPolygon(){
 
     //sacale to tile
     for(auto &p:polyPts){
-        // daniel: added a bit more scaling to see if it works. should also be deleted from centerPolygon()
-        p = p * TILE_DIM * 1.5;
+        p = p * TILE_DIM * mPolygonScale;
     }
 
     //create scaled polygon
     QPolygonF polygon(polyPts);
 
     //this <- represents the parent so that polygon knows where to draw itself
-    return new QGraphicsPolygonItem(polygon, this);
+    QGraphicsPolygonItem *poly = new QGraphicsPolygonItem(polygon, this);
+    return poly;
+
 }
 
 /*Returns double, the distance between an item and the tower */
@@ -143,8 +149,7 @@ void Tower::centerPolygon(){
     QPointF polyCenter(1.5, 1.5);
 
     //scale the center point to fit the tile
-    //daniel: added scaling, should also be deleted from createPolygon()
-    polyCenter *= TILE_DIM * 1.5;
+    polyCenter *= TILE_DIM * mPolygonScale;
 
     //get the coordinates to be determined by the scene
     polyCenter = mapToScene(polyCenter);

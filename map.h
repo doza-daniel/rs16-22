@@ -4,6 +4,7 @@
 #include <QVector>
 #include <QString>
 #include <QPointF>
+#include <QGraphicsScene>
 
 
 
