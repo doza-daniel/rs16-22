@@ -5,11 +5,15 @@
 #include <QDebug>
 #include <QTransform>
 #include "enemy.h"
-#include "tower.h"
+#include "toweractive.h"
 #include <QList>
 
-Projectile::Projectile(Enemy *target, int dim)
+const int SHOOTING_SPEED = 7;
+const int PROJECTILE_SPEED = 3;
+
+Projectile::Projectile(Enemy *target, int attackPower, int dim)
     : mTarget(target),
+      mAttackPower(attackPower),
       mTip(dim, dim / 2),
       mDimension(dim),
       mMoveTimer(this)
@@ -27,6 +31,16 @@ Projectile::Projectile(Enemy *target, int dim)
         connect(mTarget, SIGNAL(destroyed()), this, SLOT(targetDestroyed()));
 }
 
+int Projectile::getShootingSpeed() const
+{
+    return mShootingSpeed;
+}
+
+int Projectile::getProjectileSpeed() const
+{
+    return mProjectileSpeed;
+}
+
 int Projectile::getDimension() const
 {
     return mDimension;
@@ -35,6 +49,11 @@ int Projectile::getDimension() const
 void Projectile::setAttackPower(int attackPower)
 {
     mAttackPower = attackPower;
+}
+
+int Projectile::getAttackPower() const
+{
+    return mAttackPower;
 }
 
 void Projectile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)

@@ -1,23 +1,25 @@
 #ifndef GAME_H
 #define GAME_H
+
 #include <QGraphicsScene>
 #include <QObject>
 #include <QRectF>
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
+
 #include "map.h"
 #include "enemy.h"
-#include "tower.h"
+#include "toweractive.h"
 #include "towertile.h"
-#include <QPointF>
 
 extern const int WAVE_SPAWN_TIME;
 
 class Game : public QGraphicsScene
 {
 public:
-    Game(const QRectF & sceneRect, int waveSpawnTime = WAVE_SPAWN_TIME, QObject * parent = 0);
-    Game(qreal x, qreal y, qreal width, qreal height, int waveSpawnTime = WAVE_SPAWN_TIME, QObject * parent = 0);
+    Game(const QRectF & sceneRect, QObject * parent = 0);
+    Game(qreal x, qreal y, qreal width, qreal height, QObject * parent = 0);
+    ~Game();
 
     Map getMap() const;
     void showMap();
@@ -30,7 +32,7 @@ private:
     void initView();
     QGraphicsView mView;
     Map mMap;
-    int mWaveSpawnTime;
+    int mWaveSpawnTime = WAVE_SPAWN_TIME;
 };
 
 #endif // GAME_H

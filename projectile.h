@@ -8,16 +8,27 @@
 #include <QPointF>
 #include <QTimer>
 #include <QPainterPath>
+
 #include "enemy.h"
 
-class Projectile: public QObject, public QGraphicsPixmapItem {
+extern const int SHOOTING_SPEED;
+extern const int PROJECTILE_SPEED;
+
+class Projectile: public QObject, public QGraphicsPixmapItem
+{
     Q_OBJECT
 public:
-    Projectile(Enemy* target, int dim = TILE_DIM / 4);
+    Projectile(Enemy* target, int attackPower = 1, int dim = TILE_DIM / 4);
+
     void setShootingSpeed(int speed);
+    int getShootingSpeed() const;
     void setProjectileSpeed(int speed);
-    int getDimension() const;
+    int getProjectileSpeed() const;
     void setAttackPower(int attackPower);
+    int getAttackPower() const;
+
+    int getDimension() const;
+
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;
@@ -27,13 +38,13 @@ public slots:
     void targetDestroyed();
 private:
      Enemy *mTarget;
+     int mAttackPower;
      QPointF mTip;
      int mDimension;
      QTimer mMoveTimer;
-     int mShootingSpeed = 7;
-     int mProjectileSpeed = 3;
+     int mShootingSpeed = SHOOTING_SPEED;
+     int mProjectileSpeed = PROJECTILE_SPEED;
      void checkForHit();
-     int mAttackPower = 1;
 };
 
 #endif // PROJECTILE_H
