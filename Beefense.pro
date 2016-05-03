@@ -22,11 +22,12 @@ SOURCES += main.cpp \
     game.cpp \
     map.cpp \
     enemy.cpp \
-    tower.cpp \
     projectile.cpp \
     spawner.cpp \
     mainwindow.cpp \
-    dialog.cpp
+    dialog.cpp \
+    toweractive.cpp \
+    attackarea.cpp
 
 HEADERS  += \
     tile.h \
@@ -38,11 +39,12 @@ HEADERS  += \
     game.h \
     enemy.h \
     map.h \
-    tower.h \
     projectile.h \
     spawner.h \
     mainwindow.h \
-    dialog.h
+    dialog.h \
+    toweractive.h \
+    attackarea.h
 
 RESOURCES += \
     resources.qrc

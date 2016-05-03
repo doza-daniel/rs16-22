@@ -1,5 +1,5 @@
 #include "towertile.h"
-#include "tower.h"
+#include "toweractive.h"
 
 TowerTile::TowerTile(int dim, int x, int y)
     : Tile(QPixmap(":/map/images/tower/tower_passive.jpg"), dim, x, y)

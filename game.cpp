@@ -11,11 +11,11 @@
 
 const int WAVE_SPAWN_TIME = 5000;
 
-Game::Game(const QRectF &sceneRect, int level, int waveSpawnTime, QObject *parent)
+
+Game::Game(const QRectF &sceneRect, int level, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
       mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level),
-      mWaveSpawnTime(waveSpawnTime)
+      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM)
 {
     initView();
     showMap();
@@ -31,11 +31,11 @@ Game::Game(const QRectF &sceneRect, int level, int waveSpawnTime, QObject *paren
     moveTimer->start(MOVEMENT_SPEED);
 }
 
-Game::Game(qreal x, qreal y, qreal width, qreal height, int level, int waveSpawnTime, QObject *parent)
+
+Game::Game(qreal x, qreal y, qreal width, qreal height, int level, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
       mView(this),
-       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level),
-      mWaveSpawnTime(waveSpawnTime)
+       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM)
 {
     initView();
     showMap();
@@ -49,6 +49,11 @@ Game::Game(qreal x, qreal y, qreal width, qreal height, int level, int waveSpawn
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
     moveTimer->start(MOVEMENT_SPEED);
+}
+
+Game::~Game()
+{
+
 }
 
 Map Game::getMap() const
@@ -83,13 +88,12 @@ int Game::getWaveSpawnTime() const
 
 void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-//    qDebug() << "CLICKED" << event->scenePos().x() << event->scenePos().y();
     QGraphicsItem *tmp = itemAt(event->scenePos().x(),event->scenePos().y(),QTransform());
     if(tmp){
         TowerTile *t = dynamic_cast<TowerTile*>(tmp);
         if(t){
             QPointF pos = t->pos();
-            auto twr = new Tower(pos.x(),pos.y(),*this);
+            auto twr = new TowerActive(pos.x(),pos.y(), this);
             this->addItem(twr);
             delete t;
         }

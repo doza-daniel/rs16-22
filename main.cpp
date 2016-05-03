@@ -9,7 +9,7 @@
 #include "endtile.h"
 #include "game.h"
 #include "map.h"
-#include "tower.h"
+#include "toweractive.h"
 #include "projectile.h"
 #include "mainwindow.h"
 #include "dialog.h"
