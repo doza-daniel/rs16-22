@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dialog.h"
+#include <cstdlib>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,5 +28,5 @@ void MainWindow::chooseLevel()
 
 void MainWindow::exitGame()
 {
-    delete this;
+    exit(EXIT_SUCCESS);
 }

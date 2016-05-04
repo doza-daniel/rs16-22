@@ -8,8 +8,8 @@
 #include "toweractive.h"
 #include <QList>
 
-const int SHOOTING_SPEED = 4;
-const int PROJECTILE_SPEED = 1;
+const int SHOOTING_SPEED = 7;
+const int PROJECTILE_SPEED = 3;
 
 Projectile::Projectile(Enemy *target, int attackPower, int dim)
     : mTarget(target),

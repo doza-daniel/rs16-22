@@ -88,14 +88,20 @@ int Game::getWaveSpawnTime() const
 
 void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QGraphicsItem *tmp = itemAt(event->scenePos().x(),event->scenePos().y(),QTransform());
-    if(tmp){
-        TowerTile *t = dynamic_cast<TowerTile*>(tmp);
-        if(t){
-            QPointF pos = t->pos();
-            auto twr = new TowerActive(pos.x(),pos.y(), this);
+    QGraphicsItem *tmp = itemAt(event->scenePos().x(), event->scenePos().y(), QTransform());
+    if(tmp) {
+        TowerTile *pasive = dynamic_cast<TowerTile*>(tmp);
+        TowerActive *active = dynamic_cast<TowerActive*>(tmp);
+        if(pasive){
+            QPointF pos = pasive->pos();
+            auto twr = new TowerActive(pos.x(), pos.y(), this);
             this->addItem(twr);
-            delete t;
+            delete pasive;
+        } else if(active) {
+            QPointF pos = active->pos();
+            auto twr = new TowerTile(TILE_DIM, pos.x(), pos.y());
+            this->addItem(twr);
+            delete active;
         }
     }
 }

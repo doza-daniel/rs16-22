@@ -15,6 +15,7 @@ AttackArea::AttackArea(TowerActive *tower, QGraphicsScene *scene)
 
 AttackArea::~AttackArea()
 {
+    delete mArea;
 }
 
 void AttackArea::setRange(int r)
