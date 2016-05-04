@@ -4,6 +4,7 @@
 #include <QGraphicsPolygonItem>
 #include <QObject>
 #include <QGraphicsScene>
+#include <QGraphicsSceneHoverEvent>
 #include <QTimer>
 
 #include "towertile.h"
@@ -21,6 +22,9 @@ public:
     ~TowerActive();
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w = Q_NULLPTR) Q_DECL_OVERRIDE;
+    void hoverEnterEvent(QGraphicsSceneHoverEvent * event) Q_DECL_OVERRIDE;
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent * event) Q_DECL_OVERRIDE;
+
     void setAttackSpeed(int attackSpeed);
     int getAttackSpeed() const;
     void setAttackPower(int attackPower);

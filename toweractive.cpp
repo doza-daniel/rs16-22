@@ -23,7 +23,7 @@ TowerActive::TowerActive(int x, int y, QGraphicsScene *game)
 {
     connect(&mAttackTimer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
     mAttackTimer.start(mAttackSpeed);
-    setAttackPower(5);
+    setAcceptHoverEvents(true);
 }
 
 TowerActive::~TowerActive()
@@ -46,6 +46,16 @@ void TowerActive::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     painter->setBrush(tower);
     painter->drawEllipse(mCenter, TILE_DIM * 30 / 100, TILE_DIM * 30 / 100);
     */
+}
+
+void TowerActive::hoverEnterEvent(QGraphicsSceneHoverEvent *)
+{
+    mAttackArea.show();
+}
+
+void TowerActive::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
+{
+    mAttackArea.hide();
 }
 
 void TowerActive::setAttackSpeed(int attackSpeed)
