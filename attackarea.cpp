@@ -5,8 +5,8 @@
 const int ATTACK_RANGE_SIZE = TILE_DIM * 5;
 
 AttackArea::AttackArea(TowerActive *tower, QGraphicsScene *scene)
-    : mTower(tower),
-      mScene(scene)
+    : mTower(tower)
+//      mScene(scene)
 {
     mArea = new QGraphicsEllipseItem(0, 0, ATTACK_RANGE_SIZE, ATTACK_RANGE_SIZE);
     allignWithTower();

@@ -24,7 +24,7 @@ public:
 private:
     QGraphicsEllipseItem *mArea;
     TowerActive *mTower;
-    QGraphicsScene *mScene;
+//    QGraphicsScene *mScene;
     int mRange = ATTACK_RANGE_SIZE;
 
     void allignWithTower();
