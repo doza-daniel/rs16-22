@@ -39,6 +39,16 @@ bool AttackArea::collidesWithPath(const QPainterPath &path, Qt::ItemSelectionMod
     return mArea->collidesWithPath(path, mode);
 }
 
+void AttackArea::show()
+{
+    mArea->setPen(QPen());
+}
+
+void AttackArea::hide()
+{
+    mArea->setPen(Qt::NoPen);
+}
+
 void AttackArea::allignWithTower()
 {
     QPointF tCenter = mTower->getCenter();

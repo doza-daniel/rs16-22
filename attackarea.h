@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <QGraphicsItem>
+#include <QPen>
 
 #include "tile.h"
 
@@ -20,6 +21,10 @@ public:
     QList<QGraphicsItem *> collidingItems(Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const;
     bool collidesWithItem(const QGraphicsItem * other, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const;
     bool collidesWithPath(const QPainterPath & path, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape) const;
+
+    void show();
+    void hide();
+
 
 private:
     QGraphicsEllipseItem *mArea;

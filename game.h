@@ -26,6 +26,7 @@ public:
     void show();
     void setWaveSpawnTime(int n);
     int getWaveSpawnTime() const;
+
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
 private:
