@@ -85,7 +85,7 @@
         <string notr="true">font: 64pt &quot;Futura&quot;;</string>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:64pt; font-weight:600; color:#4b3e10;&quot;&gt;BEEFENCE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#4b3e10;&quot;&gt;BEEFENSE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -205,8 +205,6 @@ color:#4b3e10;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <zorder>verticalLayoutWidget</zorder>
-    <zorder>verticalLayoutWidget</zorder>
    </widget>
    <zorder>graphicsView</zorder>
    <zorder>frame</zorder>
