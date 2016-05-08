@@ -1,0 +1,16 @@
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,t,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,r,r,r,r,e,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,r,g,g,g,g,g,g,g,g
+g,g,g,g,s,r,r,g,t,g,g,r,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,r,g,g,g,g,r,g,t,g,g,g,g,g,g
+g,g,g,g,g,g,r,r,r,r,g,r,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,r,g,r,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,t,g,r,g,r,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,r,r,r,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
