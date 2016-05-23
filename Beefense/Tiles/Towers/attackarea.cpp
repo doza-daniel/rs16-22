@@ -11,6 +11,7 @@ AttackArea::AttackArea(TowerActive *tower, QGraphicsScene *scene)
 {
     mArea = new QGraphicsEllipseItem(0, 0, ATTACK_RANGE_SIZE, ATTACK_RANGE_SIZE);
     allignWithTower();
+    mArea->setZValue(TOWER_Z_VALUE - 1);
     show();
     scene->addItem(mArea);
 }
@@ -44,14 +45,12 @@ bool AttackArea::collidesWithPath(const QPainterPath &path, Qt::ItemSelectionMod
 
 void AttackArea::show()
 {
-    mArea->setZValue(2000);
-    mArea->setPen(QPen());
+    mArea->setVisible(true);
 }
 
 void AttackArea::hide()
 {
-    mArea->setZValue(-2000);
-    mArea->setPen(Qt::NoPen);
+    mArea->setVisible(false);
 }
 
 void AttackArea::allignWithTower()

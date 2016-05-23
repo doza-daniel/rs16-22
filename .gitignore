@@ -47,4 +47,6 @@ Temporary Items
 .apdisk
 
 #Qt creator garbage
-Beefense.pro.user
+Beefense.pro.user*
+build*
+

@@ -13,6 +13,7 @@
 
 extern const int ATTACK_SPEED;
 extern const int ATTACK_POWER;
+extern const int TOWER_Z_VALUE;
 
 class TowerActive: public QObject, public Tile
 {

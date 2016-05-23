@@ -11,6 +11,7 @@
 #include <QDebug>
 
 const int ATTACK_SPEED = 1000;
+const int TOWER_Z_VALUE = 2100;
 const int ATTACK_POWER = 1;
 
 TowerActive::TowerActive(int x, int y, QGraphicsScene *game)
@@ -22,8 +23,9 @@ TowerActive::TowerActive(int x, int y, QGraphicsScene *game)
       mTargetAcquired(false)
 {
     connect(&mAttackTimer, SIGNAL(timeout()), this, SLOT(acquireTarget()));
-    mAttackTimer.start(mAttackSpeed);
+    mAttackTimer.start(10);
     setAcceptHoverEvents(true);
+    setZValue(TOWER_Z_VALUE);
 }
 
 TowerActive::~TowerActive()
@@ -80,8 +82,12 @@ int TowerActive::getAttackPower() const
 
 void TowerActive::attackTarget(Enemy *target)
 {   
-    if(!target)
-        return;
+    if(!target) {
+       // don't have a target? look for it faster
+       mAttackTimer.setInterval(10);
+       return;
+    }
+
     //create a projectile
     Projectile* bullet = new Projectile(target, mAttackPower);
     int a = x() - (bullet->getDimension() / 2) + TILE_DIM / 2;
@@ -128,6 +134,8 @@ void TowerActive::acquireTarget()
                 closestDistance = distanceTo; // new closest
                 target = tmp;
                 mTargetAcquired = true;
+                // Found a target? shoot at regular speed.
+                mAttackTimer.setInterval(ATTACK_SPEED);
             }
         }
     }
