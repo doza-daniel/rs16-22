@@ -19,17 +19,20 @@ class TowerActive: public QObject, public Tile
 {
     Q_OBJECT
 public:
-    TowerActive(int x, int y, QGraphicsScene *game);
+    TowerActive(int x, int y, QGraphicsScene *game, const QPixmap &pic = QPixmap(":/images/tower/tower_active.jpg"));
     ~TowerActive();
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w = Q_NULLPTR) Q_DECL_OVERRIDE;
     void hoverEnterEvent(QGraphicsSceneHoverEvent * event) Q_DECL_OVERRIDE;
     void hoverLeaveEvent(QGraphicsSceneHoverEvent * event) Q_DECL_OVERRIDE;
+    virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w = Q_NULLPTR);
+
 
     void setAttackSpeed(int attackSpeed);
     int getAttackSpeed() const;
     void setAttackPower(int attackPower);
     int getAttackPower() const;
+    void setAttackRange(double range);
+    double getAttackRange() const;
 
 public slots:
     void acquireTarget();

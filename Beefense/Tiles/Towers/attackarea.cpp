@@ -3,7 +3,7 @@
 
 #include <QDebug>
 
-const int ATTACK_RANGE_SIZE = TILE_DIM * 5;
+const double ATTACK_RANGE_SIZE = TILE_DIM * 5;
 
 AttackArea::AttackArea(TowerActive *tower, QGraphicsScene *scene)
     : mTower(tower)
@@ -21,11 +21,16 @@ AttackArea::~AttackArea()
     delete mArea;
 }
 
-void AttackArea::setRange(int r)
+void AttackArea::setRange(double r)
 {
     mRange = TILE_DIM * r;
     mArea->setRect(QRectF(0, 0, mRange, mRange));
     allignWithTower();
+}
+
+double AttackArea::getRange() const
+{
+    return mRange / TILE_DIM;
 }
 
 QList<QGraphicsItem *> AttackArea::collidingItems(Qt::ItemSelectionMode mode) const

@@ -12,5 +12,7 @@
         <file>images/tower/bullet.png</file>
         <file>images/tower/tower_active.jpg</file>
         <file>images/tower/tower_passive.jpg</file>
+        <file>images/tower/greater_attack_tower.jpg</file>
+        <file>images/tower/greater_range_tower.jpg</file>
     </qresource>
 </RCC>

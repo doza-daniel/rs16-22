@@ -14,9 +14,9 @@ const int ATTACK_SPEED = 1000;
 const int TOWER_Z_VALUE = 2100;
 const int ATTACK_POWER = 1;
 
-TowerActive::TowerActive(int x, int y, QGraphicsScene *game)
+TowerActive::TowerActive(int x, int y, QGraphicsScene *game, const QPixmap &pic)
     : QObject(),
-      Tile(QPixmap(":/images/tower/tower_active.jpg"), TILE_DIM, x, y),
+      Tile(pic, TILE_DIM, x, y),
       mAttackArea(this, game),
       mGame(game),
       mAttackTimer(),
@@ -32,23 +32,6 @@ TowerActive::~TowerActive()
 {
 }
 
-/*Paints the tower tile according to this function*/
-void TowerActive::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
-{
-    QGraphicsPixmapItem::paint(painter, option, w);
-    /*
-    QColor grass(51, 204, 51);
-    QColor tower(255, 255, 0);
-
-    painter->setBrush(grass);
-    painter->setPen(Qt::NoPen);
-
-    painter->drawRect(mTile);
-
-    painter->setBrush(tower);
-    painter->drawEllipse(mCenter, TILE_DIM * 30 / 100, TILE_DIM * 30 / 100);
-    */
-}
 
 void TowerActive::hoverEnterEvent(QGraphicsSceneHoverEvent *)
 {
@@ -58,6 +41,11 @@ void TowerActive::hoverEnterEvent(QGraphicsSceneHoverEvent *)
 void TowerActive::hoverLeaveEvent(QGraphicsSceneHoverEvent *)
 {
     mAttackArea.hide();
+}
+
+void TowerActive::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
+{
+    QGraphicsPixmapItem::paint(painter, option, w);
 }
 
 void TowerActive::setAttackSpeed(int attackSpeed)
@@ -78,6 +66,15 @@ void TowerActive::setAttackPower(int attackPower)
 int TowerActive::getAttackPower() const
 {
     return mAttackPower;
+}
+
+void TowerActive::setAttackRange(double range)
+{
+    mAttackArea.setRange(range);
+}
+double TowerActive::getAttackRange() const
+{
+    return mAttackArea.getRange();
 }
 
 void TowerActive::attackTarget(Enemy *target)

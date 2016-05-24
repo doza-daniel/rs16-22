@@ -1,6 +1,8 @@
 #include "game.h"
 #include "spawner.h"
 #include "Tiles/Towers/projectile.h"
+#include "Tiles/Towers/greaterattacktower.h"
+#include "Tiles/Towers/greaterrangetower.h"
 
 #include <QTimer>
 #include <QPainter>
@@ -94,7 +96,9 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
         TowerActive *active = dynamic_cast<TowerActive*>(tmp);
         if(pasive){
             QPointF pos = pasive->pos();
-            auto twr = new TowerActive(pos.x(), pos.y(), this);
+
+            // TODO: insert gold prompt here
+            auto twr = new GreaterRangeTower(pos.x(), pos.y(), this);
             this->addItem(twr);
             delete pasive;
         } else if(active) {

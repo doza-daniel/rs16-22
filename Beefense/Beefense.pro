@@ -28,7 +28,9 @@ SOURCES += \
     Tiles/roadtile.cpp \
     Tiles/starttile.cpp \
     Tiles/tile.cpp \
-    main.cpp
+    main.cpp \
+    Tiles/Towers/greaterattacktower.cpp \
+    Tiles/Towers/greaterrangetower.cpp
 
 HEADERS  += \
     Logic/enemy.h \
@@ -45,7 +47,9 @@ HEADERS  += \
     Tiles/grasstile.h \
     Tiles/roadtile.h \
     Tiles/starttile.h \
-    Tiles/tile.h
+    Tiles/tile.h \
+    Tiles/Towers/greaterattacktower.h \
+    Tiles/Towers/greaterrangetower.h
 
 FORMS    += \
     Menu/dialog.ui \
