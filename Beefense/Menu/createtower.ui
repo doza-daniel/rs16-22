@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateTower</class>
+ <widget class="QWidget" name="CreateTower">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>255</width>
+    <height>124</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Create a tower</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../Data/resources.qrc">
+    <normaloff>:/images/tower/greater_attack_tower.jpg</normaloff>:/images/tower/greater_attack_tower.jpg</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <property name="toolTip">
+   <string notr="true"/>
+  </property>
+  <property name="statusTip">
+   <string notr="true"/>
+  </property>
+  <property name="whatsThis">
+   <string notr="true"/>
+  </property>
+  <widget class="QListWidget" name="createList">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>261</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="cursor" stdset="0">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 85, 0);
+color: rgb(255,255,255);</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Greater Attack Tower 35g</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="icon">
+     <iconset resource="../Data/resources.qrc">
+      <normaloff>:/images/tower/greater_attack_tower.jpg</normaloff>:/images/tower/greater_attack_tower.jpg</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Greater Range Tower 35g</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="icon">
+     <iconset resource="../Data/resources.qrc">
+      <normaloff>:/images/tower/greater_range_tower.jpg</normaloff>:/images/tower/greater_range_tower.jpg</iconset>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="buyButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Gothic</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Buy</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>90</y>
+     <width>80</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Gothic</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>70</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: red;</string>
+   </property>
+   <property name="text">
+    <string>Error: Not enoguh money</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../Data/resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buyButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CreateTower</receiver>
+   <slot>buy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>65</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>127</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CreateTower</receiver>
+   <slot>cancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>189</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>127</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>buy()</slot>
+  <slot>cancel()</slot>
+ </slots>
+</ui>

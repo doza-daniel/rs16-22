@@ -28,6 +28,8 @@ public:
     void show();
     void setWaveSpawnTime(int n);
     int getWaveSpawnTime() const;
+    void setGold(int gold);
+    int getGold();
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
@@ -36,6 +38,7 @@ private:
     QGraphicsView mView;
     Map mMap;
     int mWaveSpawnTime = WAVE_SPAWN_TIME;
+    int mGold = 100;
 };
 
 #endif // GAME_H

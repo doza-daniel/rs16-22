@@ -33,6 +33,8 @@ public:
     int getAttackPower() const;
     void setAttackRange(double range);
     double getAttackRange() const;
+    static int getCost();
+
 
 public slots:
     void acquireTarget();

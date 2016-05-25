@@ -10,6 +10,9 @@ class GreaterRangeTower : public TowerActive
 public:
     GreaterRangeTower(int x, int y, QGraphicsScene *game);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w = Q_NULLPTR);
+    static int getCost();
+private:
+    static const int COST = 35;
 };
 
 #endif // GREATERRANGETOWER_H

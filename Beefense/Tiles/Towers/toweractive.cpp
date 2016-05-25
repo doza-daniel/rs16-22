@@ -77,6 +77,11 @@ double TowerActive::getAttackRange() const
     return mAttackArea.getRange();
 }
 
+int TowerActive::getCost()
+{
+    return 25;
+}
+
 void TowerActive::attackTarget(Enemy *target)
 {   
     if(!target) {

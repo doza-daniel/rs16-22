@@ -10,6 +10,7 @@
 #include <QGraphicsItem>
 #include <QTransform>
 #include <QDebug>
+#include "Menu/createtower.h"
 
 const int WAVE_SPAWN_TIME = 5000;
 
@@ -88,6 +89,14 @@ int Game::getWaveSpawnTime() const
     return mWaveSpawnTime;
 }
 
+int Game::getGold()
+{
+    return mGold;
+}
+void Game::setGold(int gold){
+    mGold = gold;
+}
+
 void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem *tmp = itemAt(event->scenePos().x(), event->scenePos().y(), QTransform());
@@ -97,10 +106,11 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if(pasive){
             QPointF pos = pasive->pos();
 
-            // TODO: insert gold prompt here
-            auto twr = new GreaterRangeTower(pos.x(), pos.y(), this);
-            this->addItem(twr);
-            delete pasive;
+
+            CreateTower interface;
+            interface.setParameters(pos,this,pasive);
+            interface.exec();
+
         } else if(active) {
             QPointF pos = active->pos();
             auto twr = new TowerTile(TILE_DIM, pos.x(), pos.y());

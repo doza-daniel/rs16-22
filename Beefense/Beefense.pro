@@ -30,7 +30,8 @@ SOURCES += \
     Tiles/tile.cpp \
     main.cpp \
     Tiles/Towers/greaterattacktower.cpp \
-    Tiles/Towers/greaterrangetower.cpp
+    Tiles/Towers/greaterrangetower.cpp \
+    Menu/createtower.cpp
 
 HEADERS  += \
     Logic/enemy.h \
@@ -49,11 +50,13 @@ HEADERS  += \
     Tiles/starttile.h \
     Tiles/tile.h \
     Tiles/Towers/greaterattacktower.h \
-    Tiles/Towers/greaterrangetower.h
+    Tiles/Towers/greaterrangetower.h \
+    Menu/createtower.h
 
 FORMS    += \
     Menu/dialog.ui \
-    Menu/mainwindow.ui
+    Menu/mainwindow.ui \
+    Menu/createtower.ui
 
 RESOURCES += \
     Data/resources.qrc
