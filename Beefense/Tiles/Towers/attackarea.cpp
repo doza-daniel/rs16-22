@@ -12,7 +12,7 @@ AttackArea::AttackArea(TowerActive *tower, QGraphicsScene *scene)
     mArea = new QGraphicsEllipseItem(0, 0, ATTACK_RANGE_SIZE, ATTACK_RANGE_SIZE);
     allignWithTower();
     mArea->setZValue(TOWER_Z_VALUE - 1);
-    show();
+    hide();
     scene->addItem(mArea);
 }
 

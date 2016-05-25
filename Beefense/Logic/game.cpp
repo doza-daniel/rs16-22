@@ -12,7 +12,7 @@
 #include <QDebug>
 #include "Menu/createtower.h"
 
-const int WAVE_SPAWN_TIME = 5000;
+const int WAVE_SPAWN_TIME = 10000;
 
 
 Game::Game(const QRectF &sceneRect, int level, QObject *parent)
