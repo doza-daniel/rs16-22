@@ -10,6 +10,7 @@
 #include <QGraphicsItem>
 #include <QTransform>
 #include <QDebug>
+#include "Menu/destroytower.h"
 #include "Menu/createtower.h"
 
 const int WAVE_SPAWN_TIME = 10000;
@@ -113,9 +114,10 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
         } else if(active) {
             QPointF pos = active->pos();
-            auto twr = new TowerTile(TILE_DIM, pos.x(), pos.y());
-            this->addItem(twr);
-            delete active;
+
+            DestroyTower interface;
+            interface.setParameters(pos,this,active);
+            interface.exec();
         }
     }
 }

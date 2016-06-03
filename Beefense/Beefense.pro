@@ -33,7 +33,8 @@ SOURCES += \
     Tiles/Towers/greaterrangetower.cpp \
     Menu/createtower.cpp \
     Logic/levelreader.cpp \
-    Logic/level.cpp
+    Logic/level.cpp \
+    Menu/destroytower.cpp
 
 HEADERS  += \
     Logic/enemy.h \
@@ -55,12 +56,14 @@ HEADERS  += \
     Tiles/Towers/greaterrangetower.h \
     Menu/createtower.h \
     Logic/levelreader.h \
-    Logic/level.h
+    Logic/level.h \
+    Menu/destroytower.h
 
 FORMS    += \
     Menu/dialog.ui \
     Menu/mainwindow.ui \
-    Menu/createtower.ui
+    Menu/createtower.ui \
+    Menu/destroytower.ui
 
 RESOURCES += \
     Data/resources.qrc
