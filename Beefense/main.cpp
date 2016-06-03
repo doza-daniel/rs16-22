@@ -8,17 +8,15 @@
 
 int main(int argc, char *argv[])
 {
-    std::cout << "blah" << std::endl;
-    //QApplication a(argc, argv);
+    QApplication a(argc, argv);
 
-    /*
+
     MainWindow w;
     w.show();
-    */
+
 
     //Level::getLevels(":/levels/levels.xml");
 
-    //return a.exec();
-    return 0;
+    return a.exec();
 
 }

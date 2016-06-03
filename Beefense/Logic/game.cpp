@@ -14,12 +14,13 @@
 #include "Menu/createtower.h"
 
 const int WAVE_SPAWN_TIME = 10000;
-QVector<Level *> levelList = Level::getLevels(":/levels/levels.xml");
+QVector<Level *> levelList;
 
 Game::Game(const QRectF &sceneRect, int level, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
       mView(this)
 {
+    levelList = Level::getLevels(":/levels/levels.xml");
     bool levelSet = false;
     for(Level *l : levelList) {
         if(l->getNumber() == level) {
@@ -50,6 +51,7 @@ Game::Game(qreal x, qreal y, qreal width, qreal height, int level, QObject *pare
     : QGraphicsScene(x, y, width, height, parent),
       mView(this)
 {
+    levelList = Level::getLevels(":/levels/levels.xml");
     bool levelSet = false;
     for(Level *l : levelList) {
         if(l->getNumber() == level) {

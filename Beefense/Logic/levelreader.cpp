@@ -61,10 +61,6 @@ void LevelReader::readLevel()
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "level");
     Level *currLevel = new Level();
 
-    std::cout << mXml.name().toString().toStdString() <<
-                 " " << mXml.attributes().value("num").toString().toStdString() <<
-                 std::endl;
-
     bool ok;
     int num = mXml.attributes().value("num").toInt(&ok);
     if(!ok) {
@@ -97,9 +93,6 @@ void LevelReader::readGold(Level *currLevel)
 
     QString tmp(mXml.readElementText().trimmed());
 
-    std::cout << "Gold: " <<
-                 tmp.toStdString() << std::endl;
-
     bool ok;
     int g = tmp.toInt(&ok);
 
@@ -116,9 +109,6 @@ void LevelReader::readWaves(Level *currLevel)
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "waves");
 
     QString tmp(mXml.readElementText().trimmed());
-
-    std::cout << "Number of waves: " <<
-                 tmp.toStdString() << std::endl;
 
     bool ok;
     int w = tmp.toInt(&ok);
@@ -138,9 +128,6 @@ void LevelReader::readEnemyHP(Level *currLevel)
 
     QString tmp(mXml.readElementText().trimmed());
 
-    std::cout << "Enemy health: " <<
-                 tmp.toStdString() << std::endl;
-
     bool ok;
     int hp = tmp.toInt(&ok);
 
@@ -155,13 +142,6 @@ void LevelReader::readEnemyHP(Level *currLevel)
 void LevelReader::readMap(Level *currLevel)
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "map");
-
-    std::cout << mXml.name().toString().toStdString() <<
-                 " width = " <<
-                 mXml.attributes().value("width").toString().toStdString() <<
-                " height = " <<
-                 mXml.attributes().value("height").toString().toStdString() <<
-                 ": " << std::endl;
 
     bool colsOk, rowsOk;
     int cols = mXml.attributes().value("width").toInt(&colsOk);

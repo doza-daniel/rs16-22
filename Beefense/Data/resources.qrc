@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>levels/01.txt</file>
-        <file>levels/02.txt</file>
-        <file>levels/03.txt</file>
         <file>images/enemy/bee.png</file>
         <file>images/main menu/natureMain.jpg</file>
         <file>images/tile/end.jpg</file>
