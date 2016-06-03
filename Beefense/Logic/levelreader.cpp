@@ -6,7 +6,17 @@
 #include <cstdlib>
 #include <QDebug>
 
-LevelReader::LevelReader() {}
+LevelReader::LevelReader(const QString &path)
+    : mXml(),
+      loadedLevels()
+{
+    load(path);
+}
+
+QVector<Level *> LevelReader::getLoadedLevels() const
+{
+    return loadedLevels;
+}
 
 
 void LevelReader::load(const QString &path)
@@ -29,7 +39,7 @@ bool LevelReader::read(QIODevice *device)
         if(mXml.name() == "levels")
             readAllLevels();
         else
-            mXml.raiseError("blah");
+            mXml.raiseError("Not valid levels.xml struture!");
     }
     return !mXml.error();
 }
@@ -49,64 +59,123 @@ void LevelReader::readAllLevels()
 void LevelReader::readLevel()
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "level");
+    Level *currLevel = new Level();
 
     std::cout << mXml.name().toString().toStdString() <<
                  " " << mXml.attributes().value("num").toString().toStdString() <<
                  std::endl;
+
+    bool ok;
+    int num = mXml.attributes().value("num").toInt(&ok);
+    if(!ok) {
+        qDebug() << "Invalid value for level number!";
+        exit(EXIT_FAILURE);
+    }
+    currLevel->setNumber(num);
+
     while(mXml.readNextStartElement()) {
         if(mXml.name() == "level")
             readLevel();
         else if(mXml.name() == "map")
-            readMap();
+            readMap(currLevel);
         else if(mXml.name() == "gold")
-            readGold();
+            readGold(currLevel);
         else if(mXml.name() == "waves")
-            readWaves();
+            readWaves(currLevel);
         else if(mXml.name() == "enemyHP")
-            readEnemyHP();
+            readEnemyHP(currLevel);
         else
             mXml.skipCurrentElement();
     }
+
+    loadedLevels.push_back(currLevel);
 }
 
-void LevelReader::readGold()
+void LevelReader::readGold(Level *currLevel)
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "gold");
+
+    QString tmp(mXml.readElementText().trimmed());
+
     std::cout << "Gold: " <<
-                 mXml.readElementText().toStdString() << std::endl;
+                 tmp.toStdString() << std::endl;
+
+    bool ok;
+    int g = tmp.toInt(&ok);
+
+    if(!ok) {
+        qDebug() << "Ivalid value for gold!";
+        exit(EXIT_FAILURE);
+    }
+
+    currLevel->setGold(g);
 }
 
-void LevelReader::readWaves()
+void LevelReader::readWaves(Level *currLevel)
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "waves");
+
+    QString tmp(mXml.readElementText().trimmed());
+
     std::cout << "Number of waves: " <<
-                 mXml.readElementText().toStdString() << std::endl;
+                 tmp.toStdString() << std::endl;
+
+    bool ok;
+    int w = tmp.toInt(&ok);
+
+    if(!ok) {
+        qDebug() << "Ivalid value for waves!";
+        exit(EXIT_FAILURE);
+    }
+
+    currLevel->setWaves(w);
+
 }
 
-void LevelReader::readEnemyHP()
+void LevelReader::readEnemyHP(Level *currLevel)
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "enemyHP");
+
+    QString tmp(mXml.readElementText().trimmed());
+
     std::cout << "Enemy health: " <<
-                 mXml.readElementText().toStdString() << std::endl;
+                 tmp.toStdString() << std::endl;
+
+    bool ok;
+    int hp = tmp.toInt(&ok);
+
+    if(!ok) {
+        qDebug() << "Ivalid value for enemyHP!";
+        exit(EXIT_FAILURE);
+    }
+
+    currLevel->setWaves(hp);
 }
 
-void LevelReader::readMap()
+void LevelReader::readMap(Level *currLevel)
 {
     Q_ASSERT(mXml.isStartElement() && mXml.name() == "map");
+
     std::cout << mXml.name().toString().toStdString() <<
                  " width = " <<
                  mXml.attributes().value("width").toString().toStdString() <<
                 " height = " <<
                  mXml.attributes().value("height").toString().toStdString() <<
                  ": " << std::endl;
+
+    bool colsOk, rowsOk;
+    int cols = mXml.attributes().value("width").toInt(&colsOk);
+    int rows = mXml.attributes().value("height").toInt(&rowsOk);
+
+    if(!rowsOk || !colsOk) {
+        qDebug() << "Invalid height or width values for map!";
+        exit(EXIT_FAILURE);
+    }
     QString str = mXml.readElementText();
     auto lines = str.split('\n');
 
-
-    for(QString line : lines) {
-        if(line.size() != 0)
-            std::cout << line.trimmed().toStdString() << std::endl;
-    }
+    Map *m = new Map(rows, cols, lines);
+    currLevel->setMap(m);
 }
 
 

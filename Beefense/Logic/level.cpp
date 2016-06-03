@@ -8,15 +8,29 @@ Level::Level()
 {
 }
 
-void Level::getLevels(const QString &path)
+QVector<Level *> Level::getLevels(const QString &path)
 {
-    LevelReader r;
-    r.load(path);
+    LevelReader r(path);
+    return r.getLoadedLevels();
+}
+
+Level &Level::operator =(const Level &other)
+{
+    mMap = other.getMap();
+    mGold = other.getGold();
+    mWaves = other.getWaves();
+    mNumber = other.getNumber();
+    return *this;
 }
 
 Map* Level::getMap() const
 {
     return mMap;
+}
+
+void Level::setMap(Map *m)
+{
+    mMap = m;
 }
 
 int Level::getNumber() const

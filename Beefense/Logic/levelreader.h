@@ -1,23 +1,26 @@
 #ifndef LEVELREADER_H
 #define LEVELREADER_H
 
+#include "level.h"
 #include <QString>
 #include <QXmlStreamReader>
 
 class LevelReader
 {
 public:
-    LevelReader();
-    void load(const QString &path);
+    LevelReader(const QString &path);
+    QVector<Level *> getLoadedLevels() const;
 private:
+    void load(const QString &path);
     bool read(QIODevice *device);
     void readAllLevels();
     void readLevel();
-    void readGold();
-    void readWaves();
-    void readEnemyHP();
-    void readMap();
+    void readGold(Level *currLevel);
+    void readWaves(Level *currLevel);
+    void readEnemyHP(Level *currLevel);
+    void readMap(Level *currLevel);
     QXmlStreamReader mXml;
+    QVector<Level*> loadedLevels;
 
 };
 

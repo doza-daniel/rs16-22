@@ -1,4 +1,5 @@
 #include <QApplication>
+#include <iostream>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
@@ -7,16 +8,17 @@
 
 int main(int argc, char *argv[])
 {
-   /*
-    QApplication a(argc, argv);
+    std::cout << "blah" << std::endl;
+    //QApplication a(argc, argv);
 
+    /*
     MainWindow w;
     w.show();
-
-
-    return a.exec();
     */
-    Level::getLevels(":/levels/levels.xml");
 
+    //Level::getLevels(":/levels/levels.xml");
+
+    //return a.exec();
     return 0;
+
 }

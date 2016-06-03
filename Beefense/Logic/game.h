@@ -5,12 +5,14 @@
 #include "Logic/enemy.h"
 #include "Tiles/Towers/toweractive.h"
 #include "Tiles/Towers/towertile.h"
+#include "Logic/level.h"
 
 #include <QGraphicsScene>
 #include <QObject>
 #include <QRectF>
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
+#include <QVector>
 
 
 
@@ -36,9 +38,9 @@ public:
 private:
     void initView();
     QGraphicsView mView;
-    Map mMap;
     int mWaveSpawnTime = WAVE_SPAWN_TIME;
     int mGold = 100;
+    Level mLevel;
 };
 
 #endif // GAME_H

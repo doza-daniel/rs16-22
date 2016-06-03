@@ -7,32 +7,24 @@
 
 #include <QFile>
 #include <QDebug>
-#include <QStringList>
 #include <cstdlib>
 
-QVector<QString> levelList = {
-    QString(":/levels/01.txt"),
-    QString(":/levels/02.txt"),
-    QString(":/levels/03.txt")
-};
-
-Map::Map(int rows, int cols, int level)
+Map::Map(int rows, int cols, QStringList csv)
     : mRows(rows),
       mCols(cols),
-      mLevel(level),
       mMap(rows, QVector<Tile *>(cols)),
       mPath(),
       mTowers()
 {
     mStart = nullptr;
     mEnd = nullptr;
-    loadMap();
+    loadMap(csv);
     generatePath();
 }
 
-void Map::loadMap()
+void Map::loadMap(QStringList csv)
 {
-    QVector< QVector<TileType> > typeMap = readCSVMap();
+    QVector< QVector<TileType> > typeMap = readCSVMap(csv);
     if(typeMap.size() != mRows || typeMap[0].size() != mCols) {
         qDebug() << "Invalid map size!";
     }
@@ -101,25 +93,28 @@ void Map::loadMap()
 
 
 
-QVector< QVector<TileType> > Map::readCSVMap()
+QVector< QVector<TileType> > Map::readCSVMap(QStringList csv)
 {
     QVector< QVector<TileType> > typeMap(mRows, QVector<TileType>(mCols));
-    QFile mapFile(levelList[mLevel - 1]);
-
-    if(!mapFile.open(QFile::ReadOnly | QFile::Text)) {
-        qDebug() << "Cannot open " << levelList[mLevel - 1] << " for reading!";
-        return typeMap;
-    }
-
     int row = 0;
     int numOfStart = 0, numOfEnd = 0;
-    while(!mapFile.atEnd()) {
-        QString line = mapFile.readLine().trimmed();
+
+    for(auto l = csv.begin(); l != csv.end(); ++l) {
+        QString line = (*l).trimmed();
+
+        if(line.size() == 0)
+            continue;
+
         QStringList tiles;
         tiles = line.split(',');
 
         int col = 0;
         for(auto i = tiles.begin(); i != tiles.end(); ++i, ++col) {
+            if(row >= mRows || col >= mCols) {
+                qDebug() << "Invalid map format";
+                exit(EXIT_FAILURE);
+            }
+
             if((*i).trimmed() == "g") {
                typeMap[row][col] = TileType::Grass;
             } else if((*i).trimmed() == "r") {
@@ -137,13 +132,14 @@ QVector< QVector<TileType> > Map::readCSVMap()
                exit(EXIT_FAILURE);
             }
         }
-        row++;
+        ++row;
     }
 
     if(numOfEnd != 1 || numOfStart != 1) {
         qDebug() << "Invalid map format";
         exit(EXIT_FAILURE);
     }
+
     return typeMap;
 }
 

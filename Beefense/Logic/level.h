@@ -8,10 +8,12 @@ class Level
 public:
     Level();
 
-    static void getLevels(const QString &path);
+    static QVector<Level *> getLevels(const QString &path);
 
+    Level& operator =(const Level& other);
 
     Map* getMap() const;
+    void setMap(Map *m);
     int getNumber() const;
     void setNumber(int num);
     int getGold() const;
