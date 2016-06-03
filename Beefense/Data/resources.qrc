@@ -14,5 +14,6 @@
         <file>images/tower/tower_passive.jpg</file>
         <file>images/tower/greater_attack_tower.jpg</file>
         <file>images/tower/greater_range_tower.jpg</file>
+        <file>levels/levels.xml</file>
     </qresource>
 </RCC>

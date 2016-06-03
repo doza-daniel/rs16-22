@@ -89,7 +89,7 @@ void Map::loadMap()
                     newTile->rotate(270);
                 } else {
                     qDebug() << "Invalid map layout!";
-                    exit(1);
+                    exit(EXIT_FAILURE);
                 }
                 break;
             }
