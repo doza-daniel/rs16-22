@@ -34,7 +34,8 @@ SOURCES += \
     Menu/createtower.cpp \
     Logic/levelreader.cpp \
     Logic/level.cpp \
-    Menu/destroytower.cpp
+    Menu/destroytower.cpp \
+    Logic/enumhead.cpp
 
 HEADERS  += \
     Logic/enemy.h \
@@ -57,7 +58,8 @@ HEADERS  += \
     Menu/createtower.h \
     Logic/levelreader.h \
     Logic/level.h \
-    Menu/destroytower.h
+    Menu/destroytower.h \
+    Logic/enumhead.h
 
 FORMS    += \
     Menu/dialog.ui \

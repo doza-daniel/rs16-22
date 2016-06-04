@@ -10,6 +10,8 @@
 #include <QPointF>
 #include <QTimer>
 #include <QPainterPath>
+#include <QGraphicsScene>
+#include "../../Logic/game.h"
 
 extern const int SHOOTING_SPEED;
 extern const int PROJECTILE_SPEED;
@@ -18,7 +20,7 @@ class Projectile: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    Projectile(Enemy* target, int attackPower = 1, int dim = TILE_DIM / 4);
+    Projectile(QGraphicsScene *game,Enemy* target, int attackPower = 1, int dim = TILE_DIM / 4);
 
     void setShootingSpeed(int speed);
     int getShootingSpeed() const;
@@ -45,6 +47,7 @@ private:
      int mShootingSpeed = SHOOTING_SPEED;
      int mProjectileSpeed = PROJECTILE_SPEED;
      void checkForHit();
+     QGraphicsScene *mGame;
 };
 
 #endif // PROJECTILE_H

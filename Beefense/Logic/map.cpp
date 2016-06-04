@@ -171,7 +171,7 @@ void Map::generatePath()
     mPath.push_back(new QPointF(nextPoint.x(), nextPoint.y()));
 }
 
-Map::Direction Map::nextDirection(int i, int j, Map::Direction curr) const
+Direction Map::nextDirection(int i, int j, Direction curr) const
 {
     if((mMap[i][j + 1]->getTileType() == TileType::End ||
             mMap[i][j + 1]->getTileType() == TileType::Road) &&

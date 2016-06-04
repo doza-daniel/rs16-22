@@ -17,7 +17,7 @@
    <string>Tower sale</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../Data/resources.qrc">
+   <iconset>
     <normaloff>:/images/tower/tower_passive.jpg</normaloff>:/images/tower/tower_passive.jpg</iconset>
   </property>
   <property name="styleSheet">
@@ -72,7 +72,7 @@
     <rect>
      <x>30</x>
      <y>80</y>
-     <width>80</width>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
@@ -116,9 +116,7 @@
   <zorder>yesButton</zorder>
   <zorder>noButton</zorder>
  </widget>
- <resources>
-  <include location="../Data/resources.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>noButton</sender>

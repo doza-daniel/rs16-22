@@ -2,6 +2,7 @@
 #define SPAWNER_H
 
 #include "enemy.h"
+#include "enumhead.h"
 
 #include <QGraphicsScene>
 
