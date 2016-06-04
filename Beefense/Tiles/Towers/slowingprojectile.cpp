@@ -9,5 +9,5 @@ SlowingProjectile::SlowingProjectile(QGraphicsScene *game, Enemy *target, int at
 void SlowingProjectile::targetHit(int currHealth)
 {
     mTarget->setHealth(currHealth);
-    mTarget->setMovementSpeed(mTarget->getMovementSpeed()*0.5);
+    mTarget->setMovementSpeed(mTarget->getMovementSpeed()*1.5);
 }

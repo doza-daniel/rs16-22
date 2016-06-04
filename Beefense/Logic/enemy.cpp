@@ -89,6 +89,8 @@ void Enemy::setWorth(int worth)
 
 void Enemy::setMovementSpeed(int ms)
 {
+    if(ms > MOVEMENT_SPEED * 1.5)
+        return;
     mMs = ms;
     mMoveTimer.start(mMs);
 }
