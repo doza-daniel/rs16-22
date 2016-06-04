@@ -23,7 +23,7 @@
    <string>Create a tower</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../Data/resources.qrc">
+   <iconset>
     <normaloff>:/images/tower/greater_attack_tower.jpg</normaloff>:/images/tower/greater_attack_tower.jpg</iconset>
   </property>
   <property name="windowOpacity">
@@ -65,7 +65,7 @@ color: rgb(255,255,255);</string>
      </font>
     </property>
     <property name="icon">
-     <iconset resource="../Data/resources.qrc">
+     <iconset>
       <normaloff>:/images/tower/greater_attack_tower.jpg</normaloff>:/images/tower/greater_attack_tower.jpg</iconset>
     </property>
    </item>
@@ -80,8 +80,19 @@ color: rgb(255,255,255);</string>
      </font>
     </property>
     <property name="icon">
-     <iconset resource="../Data/resources.qrc">
+     <iconset>
       <normaloff>:/images/tower/greater_range_tower.jpg</normaloff>:/images/tower/greater_range_tower.jpg</iconset>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Normal Tower 25g</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </item>
   </widget>
@@ -150,9 +161,7 @@ color: rgb(255,255,255);</string>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="../Data/resources.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buyButton</sender>
