@@ -12,7 +12,7 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
       mDimension(dim)
 {
     setPos(x, y);
-    setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13));
+    setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13));
 }
 
 Enemy::~Enemy()
