@@ -2,7 +2,10 @@
 #include "tile.h"
 
 RoadTile::RoadTile(RoadTileType type, int dim, int x, int y)
-    : Tile(QPixmap(":/images/tile/road.jpg"), dim, x, y), mRoadType(type)
+    : Tile(type == RoadTileType::Corner ?
+               QPixmap(":/images/tile/road_corner.png") :
+               QPixmap(":/images/tile/road.png"), dim, x, y),
+      mRoadType(type)
 {
     mType = TileType::Road;
 }

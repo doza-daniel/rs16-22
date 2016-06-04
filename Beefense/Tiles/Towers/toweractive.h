@@ -19,7 +19,7 @@ class TowerActive: public QObject, public Tile
 {
     Q_OBJECT
 public:
-    TowerActive(int x, int y, QGraphicsScene *game, const QPixmap &pic = QPixmap(":/images/tower/tower_active.jpg"));
+    TowerActive(int x, int y, QGraphicsScene *game, const QPixmap &pic = QPixmap(":/images/tower/tower_active.png"));
     ~TowerActive();
 
     void hoverEnterEvent(QGraphicsSceneHoverEvent * event) Q_DECL_OVERRIDE;

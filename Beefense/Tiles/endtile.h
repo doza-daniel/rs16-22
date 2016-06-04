@@ -16,7 +16,7 @@ public:
 protected slots:
     void advance(int phase) Q_DECL_OVERRIDE;
 private:
-    int mLivesLeft = 5;
+    int mLivesLeft = 50;
 };
 
 #endif // ENDTILE_H

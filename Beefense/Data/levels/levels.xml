@@ -5,13 +5,13 @@
         <enemyHP>3</enemyHP>
         <map width="20" height="16">
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
-            g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
-            g,g,r,r,r,r,g,g,g,g,g,g,g,t,g,g,g,g,g,g
-            g,g,r,t,g,r,g,t,g,r,r,r,r,g,t,g,g,g,g,g
-            g,g,r,g,g,r,g,g,g,r,t,g,r,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,g,g,g,g,t,g,g,g,g,g,g,g,g
+            g,g,r,r,r,r,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+            g,g,r,g,g,r,g,t,g,r,r,r,r,g,t,g,g,g,g,g
+            g,g,r,g,g,r,g,g,g,r,g,g,r,g,g,g,g,g,g,g
             g,g,r,g,g,r,r,r,r,r,g,g,r,r,r,r,e,g,g,g
-            g,g,s,g,g,g,g,g,t,g,g,g,g,g,g,g,g,g,g,g
-            g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+            g,g,s,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,t,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
@@ -50,19 +50,19 @@
         <waves>5</waves>
         <enemyHP>3</enemyHP>
         <map width="20" height="16">
-            g,g,g,g,g,g,g,g,g,g,t,g,g,g,g,g,g,g,g,g
-            g,g,g,g,g,g,t,g,g,g,g,g,g,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,r,r,r,r,g,g,g,g,g,g,g,g,g
-            g,g,g,g,g,g,g,r,g,g,r,g,t,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,r,g,g,r,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,t,g,r,g,g,r,g,g,g,g,g,g,g,g,g
-            g,g,g,g,g,g,g,r,g,t,r,g,g,g,g,g,g,g,g,g
-            g,g,t,g,r,r,r,r,g,g,r,g,t,g,g,g,g,g,g,g
+            g,g,g,g,g,g,g,r,g,g,r,g,g,g,g,g,g,g,g,g
+            g,g,g,g,r,r,r,r,g,g,r,g,t,g,g,g,g,g,g,g
             g,g,g,g,r,g,g,g,g,g,r,g,g,g,g,g,g,g,g,g
-            g,g,g,r,r,g,t,g,g,g,r,r,r,g,g,g,g,g,g,g
-            g,g,g,r,g,g,g,g,g,t,g,g,r,r,r,g,g,g,g,g
-            g,g,t,r,r,r,g,g,g,g,g,t,g,g,r,g,g,g,g,g
-            g,g,g,g,t,r,g,g,g,g,g,g,g,g,r,r,g,g,g,g
-            g,g,g,g,g,r,g,g,g,g,g,g,g,g,g,r,r,e,g,g
+            g,g,g,r,r,g,g,g,g,g,r,r,r,g,g,g,t,g,g,g
+            g,t,g,r,g,g,g,g,g,g,g,g,r,r,r,g,g,g,g,g
+            g,g,g,r,r,r,g,g,g,g,g,g,g,g,r,g,g,g,g,g
+            g,g,g,g,g,r,g,g,g,g,g,g,g,g,r,r,g,g,g,g
+            g,g,g,g,g,r,g,t,g,g,g,g,g,g,g,r,r,e,g,g
             g,g,s,r,r,r,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g

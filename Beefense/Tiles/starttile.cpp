@@ -1,7 +1,7 @@
 #include "starttile.h"
 
 StartTile::StartTile(int dim, int x, int y)
-    : Tile(QPixmap(":/images/tile/start.jpg"), dim, x, y)
+    : Tile(QPixmap(":/images/tile/start.png"), dim, x, y)
 {
     mType = TileType::Start;
 }

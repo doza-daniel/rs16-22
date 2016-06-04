@@ -2,6 +2,7 @@
 
 #include <QtMath>
 #include <QLineF>
+#include <QDebug>
 
 const int MOVEMENT_SPEED = 50;
 
@@ -11,7 +12,7 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
       mDimension(dim)
 {
     setPos(x, y);
-    setPixmap(QPixmap(":/images/enemy/bee.png"));
+    setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13));
 }
 
 Enemy::~Enemy()

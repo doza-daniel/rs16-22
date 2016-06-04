@@ -20,7 +20,7 @@ Projectile::Projectile(Enemy *target, int attackPower, int dim)
       mMoveTimer(this)
 {
     //sets the image of the projectile and scales it accordingly
-    setPixmap(QPixmap(":/images/tower/bullet.png"));
+    setPixmap(QPixmap(":/images/tower/bullet.png").scaled(dim + 4, dim + 4));
 
     //creates a timer, adds it to a slot which will be called periodically
     connect(&mMoveTimer, SIGNAL(timeout()), this,  SLOT(move()));

@@ -3,7 +3,7 @@
 const double RANGE_INCREASE = 1.5;
 
 GreaterRangeTower::GreaterRangeTower(int x, int y, QGraphicsScene *game)
-    : TowerActive(x, y, game, QPixmap(":/images/tower/greater_range_tower.jpg"))
+    : TowerActive(x, y, game, QPixmap(":/images/tower/greater_range_tower.png"))
 {
     setAttackRange(getAttackRange() + RANGE_INCREASE);
 }
