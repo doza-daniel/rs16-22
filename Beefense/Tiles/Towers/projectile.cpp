@@ -12,12 +12,13 @@
 const int SHOOTING_SPEED = 7;
 const int PROJECTILE_SPEED = 3;
 
-Projectile::Projectile(Enemy *target, int attackPower, int dim)
+Projectile::Projectile(QGraphicsScene *game,Enemy *target, int attackPower, int dim)
     : mTarget(target),
       mAttackPower(attackPower),
       mTip(dim, dim / 2),
       mDimension(dim),
-      mMoveTimer(this)
+      mMoveTimer(this),
+      mGame(game)
 {
     //sets the image of the projectile and scales it accordingly
     setPixmap(QPixmap(":/images/tower/bullet.png").scaled(dim + 4, dim + 4));
@@ -117,6 +118,8 @@ void Projectile::checkForHit()
         int currHealth = mTarget->getHealth();
         currHealth -= mAttackPower;
         if(currHealth <= 0){
+            Game *g = dynamic_cast<Game*>(mGame);
+            g->setGold(g->getGold()+mTarget->getWorth());
             delete mTarget;
         }
         else{
