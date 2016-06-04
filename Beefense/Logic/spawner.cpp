@@ -7,9 +7,13 @@
 const int SPAWN_TIME = 500;
 const int SPAWN_N = 5;
 
-Spawner::Spawner(Game *game)
-    :mGame(game), mEnemiesSpawned(0), mWaveTimer(nullptr)
+Spawner::Spawner(Game *game, int spawnTime, int numWaves)
+    :mGame(game), mEnemiesSpawned(0), mWaveTimer(nullptr), mNumWaves(numWaves), mWaves(0)
 {
+    this->intervalSpawn();
+    QTimer *spawnInterval = new QTimer();
+    QObject::connect(spawnInterval, SIGNAL(timeout()), this, SLOT(intervalSpawn()));
+    spawnInterval->start(spawnTime*1000);
 }
 
 void Spawner::spawnEnemy()
@@ -26,9 +30,12 @@ void Spawner::spawnEnemy()
 
 void Spawner::intervalSpawn()
 {
-    mWaveTimer = new QTimer();
-    QObject::connect(mWaveTimer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
-    mWaveTimer->start(SPAWN_TIME);
+    if(mWaves != mNumWaves) {
+        mWaveTimer = new QTimer();
+        QObject::connect(mWaveTimer, SIGNAL(timeout()), this, SLOT(spawnEnemy()));
+        mWaveTimer->start(SPAWN_TIME);
+        mWaves++;
+    }
 }
 
 

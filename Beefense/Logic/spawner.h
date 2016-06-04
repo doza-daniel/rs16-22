@@ -13,14 +13,14 @@ class Spawner : public QObject
 {
       Q_OBJECT
 public:
-    Spawner(Game *game);
+    Spawner(Game *game, int spawnTime, int numWaves);
 public slots:
     void spawnEnemy();
     void intervalSpawn();
 private:
     Game *mGame;
-    int mEnemiesSpawned;
     QTimer *mWaveTimer;
+    int mEnemiesSpawned, mSpawnTime, mNumWaves, mWaves;
 };
 
 #endif // SPAWNER_H

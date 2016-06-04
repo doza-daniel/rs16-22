@@ -35,11 +35,7 @@ Game::Game(const QRectF &sceneRect, int level, QObject *parent)
     initView();
     showMap();
 
-    Spawner *intervalSpawner = new Spawner(this);
-    intervalSpawner->intervalSpawn();
-    QTimer *spawnInterval = new QTimer();
-    QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
-    spawnInterval->start(mWaveSpawnTime);
+    Spawner *spawner = new Spawner(this, 15, 5);
 
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
@@ -66,11 +62,7 @@ Game::Game(qreal x, qreal y, qreal width, qreal height, int level, QObject *pare
     initView();
     showMap();
 
-    Spawner *intervalSpawner = new Spawner(this);
-    intervalSpawner->intervalSpawn();
-    QTimer *spawnInterval = new QTimer();
-    QObject::connect(spawnInterval, SIGNAL(timeout()), intervalSpawner, SLOT(intervalSpawn()));
-    spawnInterval->start(mWaveSpawnTime);
+    Spawner *spawner = new Spawner(this, 5, 5);
 
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
