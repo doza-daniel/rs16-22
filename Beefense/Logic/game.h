@@ -14,10 +14,6 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QVector>
 
-
-
-extern const int WAVE_SPAWN_TIME;
-
 class Game : public QGraphicsScene
 {
 public:
@@ -38,7 +34,6 @@ private:
     void initView();
     void initLevel(int level);
     QGraphicsView mView;
-    int mWaveSpawnTime = WAVE_SPAWN_TIME;
     Level mLevel;
 };
 

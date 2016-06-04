@@ -3,6 +3,7 @@
         <gold>100</gold>
         <waves>5</waves>
         <enemyHP>3</enemyHP>
+        <wavespawntime>10</wavespawntime>
         <map width="20" height="16">
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,t,g,g,g,g,g,g,g,g
@@ -26,6 +27,7 @@
         <gold>100</gold>
         <waves>5</waves>
         <enemyHP>3</enemyHP>
+        <wavespawntime>10</wavespawntime>
         <map width="20" height="16">
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,t,g,g,g,g,g,g,g
@@ -49,6 +51,7 @@
         <gold>100</gold>
         <waves>5</waves>
         <enemyHP>3</enemyHP>
+        <wavespawntime>10</wavespawntime>
         <map width="20" height="16">
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g
             g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g

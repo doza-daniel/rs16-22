@@ -13,7 +13,6 @@
 #include "Menu/destroytower.h"
 #include "Menu/createtower.h"
 
-const int WAVE_SPAWN_TIME = 10000;
 QVector<Level *> levelList;
 
 Game::Game(int level)
@@ -22,7 +21,7 @@ Game::Game(int level)
     initView();
     showMap();
 
-    Spawner *spawner = new Spawner(this, 5, 5);
+    Spawner *spawner = new Spawner(this, mLevel.getWaveSpawnTime(), mLevel.getWaves());
 
     QTimer *moveTimer = new QTimer();
     QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
@@ -56,12 +55,12 @@ void Game::show()
 
 void Game::setWaveSpawnTime(int n)
 {
-    mWaveSpawnTime = n;
+    mLevel.setWaveSpawnTime(n);
 }
 
 int Game::getWaveSpawnTime() const
 {
-    return mWaveSpawnTime;
+    return mLevel.getWaveSpawnTime();
 }
 
 int Game::getGold()

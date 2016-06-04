@@ -80,6 +80,8 @@ void LevelReader::readLevel()
             readWaves(currLevel);
         else if(mXml.name() == "enemyHP")
             readEnemyHP(currLevel);
+        else if(mXml.name() == "wavespawntime")
+            readWaveSpawnTime(currLevel);
         else
             mXml.skipCurrentElement();
     }
@@ -156,6 +158,23 @@ void LevelReader::readMap(Level *currLevel)
 
     Map *m = new Map(rows, cols, lines);
     currLevel->setMap(m);
+}
+
+void LevelReader::readWaveSpawnTime(Level *currLevel)
+{
+    Q_ASSERT(mXml.isStartElement() && mXml.name() == "wavespawntime");
+
+    QString tmp(mXml.readElementText().trimmed());
+
+    bool ok;
+    int spawntime = tmp.toInt(&ok);
+
+    if(!ok) {
+        qDebug() << "Ivalid value for wavespawntime!";
+        exit(EXIT_FAILURE);
+    }
+
+    currLevel->setWaveSpawnTime(spawntime);
 }
 
 
