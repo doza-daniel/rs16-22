@@ -2,10 +2,8 @@
 #define ROADTILE_H
 
 #include "tile.h"
+#include "../Logic/enumhead.h"
 
-enum class RoadTileType {
-    Tunnel, Corner
-};
 
 class RoadTile : public Tile
 {

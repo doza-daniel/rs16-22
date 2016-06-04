@@ -7,16 +7,10 @@
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
 #include <QPointF>
+#include "../Logic/enumhead.h"
 
 extern const int TILE_DIM;
 
-enum class TileType {
-    Grass = 0,
-    Road = 1,
-    Tower = 2,
-    Start = 3,
-    End = 4
-};
 class Tile : public QGraphicsPixmapItem
 {
 public:
