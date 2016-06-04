@@ -4,7 +4,7 @@
 #include "towertile.h"
 #include "Logic/enemy.h"
 #include "attackarea.h"
-
+//#include "projectile.h"
 #include <QGraphicsPolygonItem>
 #include <QObject>
 #include <QGraphicsScene>
@@ -14,6 +14,7 @@
 extern const int ATTACK_SPEED;
 extern const int ATTACK_POWER;
 extern const int TOWER_Z_VALUE;
+class Projectile;
 
 class TowerActive: public QObject, public Tile
 {
@@ -33,22 +34,30 @@ public:
     int getAttackPower() const;
     void setAttackRange(double range);
     double getAttackRange() const;
+    void attackTarget(Enemy *target);
     static int getCost();
+
+    virtual Projectile* createProjectile(Enemy* target);
+    QGraphicsScene *mGame;
+    int mAttackPower = ATTACK_POWER;
 
 
 public slots:
     void acquireTarget();
+
+
+
+
 private:
     AttackArea mAttackArea;
-    QGraphicsScene *mGame;
+
     QTimer mAttackTimer;
     bool mTargetAcquired;
 
     int mAttackSpeed = ATTACK_SPEED;
-    int mAttackPower = ATTACK_POWER;
+
 
     double distanceToItem(QGraphicsItem *item);
-    void attackTarget(Enemy *target);
 };
 
 #endif // TOWERACTIVE_H

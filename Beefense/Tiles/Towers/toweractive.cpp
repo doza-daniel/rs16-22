@@ -82,6 +82,11 @@ int TowerActive::getCost()
     return 25;
 }
 
+Projectile* TowerActive::createProjectile(Enemy *target)
+{
+    return new Projectile(mGame,target, mAttackPower);
+}
+
 void TowerActive::attackTarget(Enemy *target)
 {   
     if(!target) {
@@ -91,7 +96,7 @@ void TowerActive::attackTarget(Enemy *target)
     }
 
     //create a projectile
-    Projectile* bullet = new Projectile(mGame,target, mAttackPower);
+    Projectile* bullet = createProjectile(target);
     int a = x() - (bullet->getDimension() / 2) + TILE_DIM / 2;
     int b = y() - (bullet->getDimension() / 2) + TILE_DIM / 2;
     bullet->setPos(QPointF(a, b));
@@ -107,6 +112,8 @@ void TowerActive::attackTarget(Enemy *target)
 
     mGame->addItem(bullet);
 }
+
+
 
 /*Used to detect collision between Enemy and mAttackRange polygon*/
 void TowerActive::acquireTarget()

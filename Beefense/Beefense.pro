@@ -35,7 +35,9 @@ SOURCES += \
     Logic/levelreader.cpp \
     Logic/level.cpp \
     Menu/destroytower.cpp \
-    Logic/enumhead.cpp
+    Logic/enumhead.cpp \
+    Tiles/Towers/slowtower.cpp \
+    Tiles/Towers/slowingprojectile.cpp
 
 HEADERS  += \
     Logic/enemy.h \
@@ -59,7 +61,9 @@ HEADERS  += \
     Logic/levelreader.h \
     Logic/level.h \
     Menu/destroytower.h \
-    Logic/enumhead.h
+    Logic/enumhead.h \
+    Tiles/Towers/slowtower.h \
+    Tiles/Towers/slowingprojectile.h
 
 FORMS    += \
     Menu/dialog.ui \

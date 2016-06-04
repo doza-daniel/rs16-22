@@ -3,6 +3,7 @@
 #include "../Tiles/Towers/attackarea.h"
 #include "../Tiles/Towers/greaterattacktower.h"
 #include "../Tiles/Towers/greaterrangetower.h"
+#include "../Tiles/Towers/slowtower.h"
 
 CreateTower::CreateTower(QWidget *parent) :
     QDialog(parent),
@@ -29,18 +30,21 @@ void CreateTower::buy()
     int type = ui->createList->currentRow();
     TowerActive *twr = nullptr;
     switch(type){
+        case 3:
+            twr = new SlowTower(mPos.x(),mPos.y(),mGame);
+        break;
         case 2:
         if(mGame->getGold() >= 25)
             twr = new TowerActive(mPos.x(),mPos.y(),mGame);
-            break;
+        break;
         case 1:
         if(mGame->getGold() >= 35)
              twr = new GreaterRangeTower(mPos.x(), mPos.y(), mGame);
-            break;
+        break;
         case 0:
             if(mGame->getGold() >= 35)
                  twr = new GreaterAttackTower(mPos.x(), mPos.y(), mGame);
-            break;
+        break;
 
     }
     if(twr){

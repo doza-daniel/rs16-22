@@ -95,6 +95,17 @@ color: rgb(255,255,255);</string>
      </font>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Slowing Tower 50g</string>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Gothic</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+   </item>
   </widget>
   <widget class="QPushButton" name="buyButton">
    <property name="geometry">
