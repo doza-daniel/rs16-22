@@ -9,14 +9,14 @@
 #include <QRectF>
 #include <QObject>
 #include <QPixmap>
-
+#include <QTimer>
 
 extern const int MOVEMENT_SPEED;
 
 
 class Enemy : public QObject, public QGraphicsPixmapItem
 {
-
+    Q_OBJECT
 public:
     Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim = TILE_DIM);
     Enemy(EnemyType type,qreal x, qreal y, QVector<QPointF *> path, int dim = TILE_DIM);
@@ -34,8 +34,8 @@ public:
     void setMaxHealth(int health);
     int getMaxHealth();
 
-protected slots:
-    void advance(int phase) Q_DECL_OVERRIDE;
+public slots:
+    void move();
 
 private:
     QVector<QPointF *> mPath;
@@ -46,6 +46,7 @@ private:
     int mHealth = 3;
     int mWorth = 5;
     int mMs = MOVEMENT_SPEED;
+    QTimer mMoveTimer;
 };
 
 #endif // ENEMY_H

@@ -4,9 +4,12 @@
 #include <cstdlib>
 
 EndTile::EndTile(int dim, int x, int y)
-    : Tile(QPixmap(":/images/tile/end.png"), dim, x, y)
+    : Tile(QPixmap(":/images/tile/end.png"), dim, x, y),
+      mDestroyTimer(this)
 {
     mType = TileType::End;
+    connect(&mDestroyTimer, SIGNAL(timeout()), this, SLOT(destroy()));
+    mDestroyTimer.start(50);
 }
 
 void EndTile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
@@ -33,7 +36,7 @@ QPainterPath EndTile::shape() const
     return path;
 }
 
-void EndTile::advance(int)
+void EndTile::destroy()
 {
     QList<QGraphicsItem*> items = this->collidingItems();
     for(int i = 0; i < items.size(); i++) {

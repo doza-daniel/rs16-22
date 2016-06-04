@@ -4,31 +4,29 @@
 #include <QLineF>
 #include <QDebug>
 
-const int MOVEMENT_SPEED = 50;
+const int MOVEMENT_SPEED = 30;
 
-Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
+
+Enemy::Enemy(EnemyType type,qreal x, qreal y, QVector<QPointF *> path, int dim)
     : mPath(path),
       mWaypoint(0),
-      mDimension(dim)
-{
-    setPos(x, y);
-    setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13));
-}
-
- Enemy::Enemy(EnemyType type,qreal x, qreal y, QVector<QPointF *> path, int dim)
-    : mPath(path),
-      mWaypoint(0),
-      mDimension(dim)
+      mDimension(dim),
+      mMoveTimer(this)
 {
     setPos(x, y);
     setOffset(0, 10);
-    type == EnemyType::bee?
-        setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13))
-              :
+
+    if(type == EnemyType::bee) {
+        setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13));
+    } else {
         setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13));
         setWorth(10);
         setHealth(8);
         setMaxHealth(8);
+    }
+
+    connect(&mMoveTimer, SIGNAL(timeout()), this, SLOT(move()));
+    mMoveTimer.start(mMs);
 }
 
 Enemy::~Enemy()
@@ -92,6 +90,7 @@ void Enemy::setWorth(int worth)
 void Enemy::setMovementSpeed(int ms)
 {
     mMs = ms;
+    mMoveTimer.start(mMs);
 }
 int Enemy::getMovementSpeed(){
     return mMs;
@@ -111,7 +110,7 @@ int Enemy::getWorth(){
     return mWorth;
 }
 
-void Enemy::advance(int)
+void Enemy::move()
 {
     if(mWaypoint >= mPath.size())
         return;

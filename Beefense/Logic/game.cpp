@@ -22,10 +22,6 @@ Game::Game(int level)
     showMap();
 
     Spawner *spawner = new Spawner(this, mLevel.getWaveSpawnTime(), mLevel.getWaves());
-
-    QTimer *moveTimer = new QTimer();
-    QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
-    moveTimer->start(MOVEMENT_SPEED);
 }
 
 Game::~Game()
