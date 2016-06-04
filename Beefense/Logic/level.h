@@ -20,12 +20,15 @@ public:
     void setGold(int gold);
     int getWaves() const;
     void setWaves(int waves);
+    int getWaveSpawnTime() const;
+    void setWaveSpawnTime(int spawntime);
 
 private:
     Map *mMap;
     int mGold;
     int mWaves;
     int mNumber;
+    int mWaveSpawnTime;
 };
 
 #endif // LEVEL_H

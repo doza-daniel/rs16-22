@@ -21,7 +21,10 @@ public slots:
 private:
     Game *mGame;
     QTimer *mWaveTimer;
-    int mEnemiesSpawned, mSpawnTime, mNumWaves, mWaves;
+    int mEnemiesSpawned;
+    int mSpawnTime;
+    int mNumWaves;
+    int mWaves;
 };
 
 #endif // SPAWNER_H

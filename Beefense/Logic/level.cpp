@@ -20,6 +20,7 @@ Level &Level::operator =(const Level &other)
     mGold = other.getGold();
     mWaves = other.getWaves();
     mNumber = other.getNumber();
+    mWaveSpawnTime = other.getWaveSpawnTime();
     return *this;
 }
 
@@ -60,5 +61,15 @@ int Level::getWaves() const
 
 void Level::setWaves(int waves)
 {
-   mWaves = waves;
+    mWaves = waves;
+}
+
+int Level::getWaveSpawnTime() const
+{
+    return mWaveSpawnTime;
+}
+
+void Level::setWaveSpawnTime(int spawntime)
+{
+    mWaveSpawnTime = spawntime;
 }

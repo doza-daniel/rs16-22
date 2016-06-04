@@ -19,6 +19,7 @@ private:
     void readWaves(Level *currLevel);
     void readEnemyHP(Level *currLevel);
     void readMap(Level *currLevel);
+    void readWaveSpawnTime(Level *currLevel);
     QXmlStreamReader mXml;
     QVector<Level*> loadedLevels;
 
