@@ -6,7 +6,6 @@
         <file>images/tile/start.png</file>
         <file>images/tower/greater_attack_tower.png</file>
         <file>images/tower/greater_range_tower.png</file>
-        <file>images/tower/toweractive.png</file>
         <file>images/tower/tower_passive.png</file>
         <file>images/enemy/bee.png</file>
         <file>images/tile/road.png</file>
@@ -14,5 +13,6 @@
         <file>images/tile/end.png</file>
         <file>images/tower/bullet.png</file>
         <file>images/enemy/angry_bee.png</file>
+        <file>images/tower/tower_active.png</file>
     </qresource>
 </RCC>

@@ -32,14 +32,15 @@ void CreateTower::buy()
         case 2:
         if(mGame->getGold() >= 25)
             twr = new TowerActive(mPos.x(),mPos.y(),mGame);
+            break;
         case 1:
         if(mGame->getGold() >= 35)
              twr = new GreaterRangeTower(mPos.x(), mPos.y(), mGame);
-        break;
+            break;
         case 0:
             if(mGame->getGold() >= 35)
                  twr = new GreaterAttackTower(mPos.x(), mPos.y(), mGame);
-        break;
+            break;
 
     }
     if(twr){
