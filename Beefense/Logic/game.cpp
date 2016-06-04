@@ -100,7 +100,7 @@ void Game::initView()
     mView.setScene(this);
     setSceneRect(0, 0, TILE_DIM * mLevel.getMap()->getCols(),
                  mLevel.getMap()->getRows() * TILE_DIM);
-    // mView.setRenderHint(QPainter::Antialiasing);
+    mView.setRenderHint(QPainter::Antialiasing);
     mView.setFixedHeight(this->height());
     mView.setFixedWidth(this->width());
     mView.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

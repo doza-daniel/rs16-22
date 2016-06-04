@@ -21,13 +21,14 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
       mDimension(dim)
 {
     setPos(x, y);
+    setOffset(0, 10);
     type == EnemyType::bee?
         setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13))
               :
         setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13));
         setWorth(10);
-        setHealth(8)
-              ;
+        setHealth(8);
+        setMaxHealth(8);
 }
 
 Enemy::~Enemy()
@@ -52,6 +53,26 @@ QPainterPath Enemy::shape() const
     return path;
 }
 
+void Enemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
+{
+    QGraphicsPixmapItem::paint(painter, option, w);
+    QGraphicsLineItem line;
+    line.setLine(10, 5, 30, 5);
+    line.setPen(QPen(QBrush(Qt::black), 5));
+    line.paint(painter, option);
+
+    QGraphicsLineItem healthLine;
+    if(mMaxHealth == mHealth) {
+        healthLine.setLine(10, 5, 30, 5);
+        healthLine.setPen(QPen(QBrush(Qt::red), 2));
+        healthLine.paint(painter, option);
+    } else {
+        healthLine.setLine(10, 5, mHealth*20/mMaxHealth + 10, 5);
+        healthLine.setPen(QPen(QBrush(Qt::red), 2));
+        healthLine.paint(painter, option);
+    }
+}
+
 /*Sets the health of the enemy*/
 void Enemy::setHealth(int health)
 {
@@ -74,6 +95,16 @@ void Enemy::setMovementSpeed(int ms)
 }
 int Enemy::getMovementSpeed(){
     return mMs;
+}
+
+void Enemy::setMaxHealth(int health)
+{
+    mMaxHealth = health;
+}
+
+int Enemy::getMaxHealth()
+{
+    return mMaxHealth;
 }
 
 int Enemy::getWorth(){
