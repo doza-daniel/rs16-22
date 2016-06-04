@@ -7,6 +7,7 @@
 const int SPAWN_TIME = 500;
 const int SPAWN_N = 5;
 
+
 Spawner::Spawner(Game *game)
     :mGame(game), mEnemiesSpawned(0), mWaveTimer(nullptr)
 {
@@ -19,7 +20,7 @@ void Spawner::spawnEnemy()
             delete mWaveTimer;
         mEnemiesSpawned = 0;
     }
-    Enemy *enemy = new Enemy(mGame->getMap().getStart()->x(), mGame->getMap().getStart()->y(), mGame->getMap().getPath());
+    Enemy *enemy = new Enemy(EnemyType::angryBee,mGame->getMap().getStart()->x(), mGame->getMap().getStart()->y(), mGame->getMap().getPath());
     mGame->addItem(enemy);
     mEnemiesSpawned++;
 }

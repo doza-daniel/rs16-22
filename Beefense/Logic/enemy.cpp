@@ -15,6 +15,19 @@ Enemy::Enemy(qreal x, qreal y, QVector<QPointF *> path, int dim)
     setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13));
 }
 
+ Enemy::Enemy(EnemyType type,qreal x, qreal y, QVector<QPointF *> path, int dim)
+    : mPath(path),
+      mWaypoint(0),
+      mDimension(dim)
+{
+    setPos(x, y);
+    type == EnemyType::bee?
+        setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13))
+              :
+        setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13))
+              ;
+}
+
 Enemy::~Enemy()
 {
 
@@ -46,6 +59,23 @@ void Enemy::setHealth(int health)
 int Enemy::getHealth()
 {
     return mHealth;
+}
+
+void Enemy::setWorth(int worth)
+{
+    mWorth = worth;
+}
+
+void Enemy::setMovementSpeed(int ms)
+{
+    mMs = ms;
+}
+int Enemy::getMovementSpeed(){
+    return mMs;
+}
+
+int Enemy::getWorth(){
+    return mWorth;
 }
 
 void Enemy::advance(int)

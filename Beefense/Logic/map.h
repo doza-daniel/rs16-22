@@ -2,6 +2,7 @@
 #define MAP_H
 
 #include "Tiles/tile.h"
+#include "enumhead.h"
 
 #include <QStringList>
 #include <QVector>
@@ -29,11 +30,6 @@ private:
     QVector< QVector<Tile *> > mMap;
     QVector<QPointF *> mPath;
     QVector<Tile *> mTowers;
-
-
-    enum class Direction {
-        None, Up, Down, Left, Right
-    };
 
     void loadMap(QStringList csv);
     void generatePath();
