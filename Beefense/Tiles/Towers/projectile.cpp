@@ -1,6 +1,5 @@
 #include "projectile.h"
 #include "Logic/enemy.h"
-#include "toweractive.h"
 
 #include <QPixmap>
 #include <QTimer>
@@ -123,10 +122,14 @@ void Projectile::checkForHit()
             delete mTarget;
         }
         else{
-            mTarget->setHealth(currHealth);
+           targetHit(currHealth);
         }
         delete this;
     }
+}
+
+void Projectile::targetHit(int currHealth){
+    mTarget->setHealth(currHealth);
 }
 
 /*Defines what happens to the bullet when the target is destroyed*/

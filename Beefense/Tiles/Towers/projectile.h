@@ -21,6 +21,7 @@ class Projectile: public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Projectile(QGraphicsScene *game,Enemy* target, int attackPower = 1, int dim = TILE_DIM / 4);
+    Projectile();
 
     void setShootingSpeed(int speed);
     int getShootingSpeed() const;
@@ -31,6 +32,9 @@ public:
 
     int getDimension() const;
 
+    virtual void targetHit(int currHealth);
+    Enemy *mTarget;
+
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) Q_DECL_OVERRIDE;
     QPainterPath shape() const Q_DECL_OVERRIDE;
@@ -38,8 +42,11 @@ public:
 public slots:
     void move();
     void targetDestroyed();
+
+
+
+
 private:
-     Enemy *mTarget;
      int mAttackPower;
      QPointF mTip;
      int mDimension;
