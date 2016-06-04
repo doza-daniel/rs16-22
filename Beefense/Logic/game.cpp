@@ -16,49 +16,9 @@
 const int WAVE_SPAWN_TIME = 10000;
 QVector<Level *> levelList;
 
-Game::Game(const QRectF &sceneRect, int level, QObject *parent)
-    : QGraphicsScene(sceneRect, parent),
-      mView(this)
+Game::Game(int level)
 {
-    levelList = Level::getLevels(":/levels/levels.xml");
-    bool levelSet = false;
-    for(Level *l : levelList) {
-        if(l->getNumber() == level) {
-            mLevel = *(l);
-            levelSet = true;
-        }
-    }
-    if(!levelSet) {
-        qDebug() << "Level " << level << " does not exist!";
-        exit(EXIT_FAILURE);
-    }
-    initView();
-    showMap();
-
-    Spawner *spawner = new Spawner(this, 15, 5);
-
-    QTimer *moveTimer = new QTimer();
-    QObject::connect(moveTimer, SIGNAL(timeout()), this, SLOT(advance()));
-    moveTimer->start(MOVEMENT_SPEED);
-}
-
-
-Game::Game(qreal x, qreal y, qreal width, qreal height, int level, QObject *parent)
-    : QGraphicsScene(x, y, width, height, parent),
-      mView(this)
-{
-    levelList = Level::getLevels(":/levels/levels.xml");
-    bool levelSet = false;
-    for(Level *l : levelList) {
-        if(l->getNumber() == level) {
-            mLevel = *(l);
-            levelSet = true;
-        }
-    }
-    if(!levelSet) {
-        qDebug() << "Level " << level << " does not exist!";
-        exit(EXIT_FAILURE);
-    }
+    initLevel(level);
     initView();
     showMap();
 
@@ -106,10 +66,10 @@ int Game::getWaveSpawnTime() const
 
 int Game::getGold()
 {
-    return mGold;
+    return mLevel.getGold();
 }
 void Game::setGold(int gold){
-    mGold = gold;
+    mLevel.setGold(gold);
 }
 
 void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -138,9 +98,28 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void Game::initView()
 {
+    mView.setScene(this);
+    setSceneRect(0, 0, TILE_DIM * mLevel.getMap()->getCols(),
+                 mLevel.getMap()->getRows() * TILE_DIM);
     // mView.setRenderHint(QPainter::Antialiasing);
     mView.setFixedHeight(this->height());
     mView.setFixedWidth(this->width());
     mView.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     mView.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
+void Game::initLevel(int level)
+{
+    levelList = Level::getLevels(":/levels/levels.xml");
+    bool levelSet = false;
+    for(Level *l : levelList) {
+        if(l->getNumber() == level) {
+            mLevel = *(l);
+            levelSet = true;
+        }
+    }
+    if(!levelSet) {
+        qDebug() << "Level " << level << " does not exist!";
+        exit(EXIT_FAILURE);
+    }
 }
