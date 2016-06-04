@@ -23,7 +23,7 @@ void Dialog::startGame()
 {
     if(mGameStarted)
         return;
-    mGame = new Game(0, 0, 1000, 800, mLevelNum);
+    mGame = new Game(mLevelNum);
     mGameStarted = true;
     mGame->show();
     this->close();
