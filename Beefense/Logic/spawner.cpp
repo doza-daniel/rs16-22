@@ -24,7 +24,12 @@ void Spawner::spawnEnemy()
             delete mWaveTimer;
         mEnemiesSpawned = 0;
     }
-    Enemy *enemy = new Enemy(EnemyType::angryBee,mGame->getMap().getStart()->x(), mGame->getMap().getStart()->y(), mGame->getMap().getPath());
+    Enemy *enemy;
+    if(mWaves <= mNumWaves / 2 + 1) {
+        enemy = new Enemy(EnemyType::Bee, mGame->getMap().getStart()->x(), mGame->getMap().getStart()->y(), mGame->getMap().getPath());
+    } else {
+        enemy = new Enemy(EnemyType::AngryBee, mGame->getMap().getStart()->x(), mGame->getMap().getStart()->y(), mGame->getMap().getPath());
+    }
     mGame->addItem(enemy);
     mEnemiesSpawned++;
 }

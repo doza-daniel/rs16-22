@@ -16,7 +16,7 @@ Enemy::Enemy(EnemyType type,qreal x, qreal y, QVector<QPointF *> path, int dim)
     setPos(x, y);
     setOffset(0, 10);
 
-    if(type == EnemyType::bee) {
+    if(type == EnemyType::Bee) {
         setPixmap(QPixmap(":/images/enemy/bee.png").scaled(dim - 13, dim - 13));
     } else {
         setPixmap(QPixmap(":/images/enemy/angry_bee.png").scaled(dim - 13, dim - 13));

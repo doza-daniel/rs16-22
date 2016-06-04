@@ -138,7 +138,6 @@ void LevelReader::readEnemyHP(Level *currLevel)
         exit(EXIT_FAILURE);
     }
 
-    currLevel->setWaves(hp);
 }
 
 void LevelReader::readMap(Level *currLevel)

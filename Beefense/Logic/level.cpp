@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "level.h"
 #include "levelreader.h"
 
@@ -61,6 +62,7 @@ int Level::getWaves() const
 
 void Level::setWaves(int waves)
 {
+    qDebug() << waves;
     mWaves = waves;
 }
 

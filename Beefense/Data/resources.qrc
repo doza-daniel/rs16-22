@@ -14,5 +14,6 @@
         <file>images/tower/bullet.png</file>
         <file>images/enemy/angry_bee.png</file>
         <file>images/tower/tower_active.png</file>
+        <file>images/tower/slow_tower.png</file>
     </qresource>
 </RCC>

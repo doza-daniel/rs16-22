@@ -4,7 +4,7 @@
 
 enum class EnemyType
 {
-    bee, angryBee
+    Bee, AngryBee
 };
 
 enum class RoadTileType {

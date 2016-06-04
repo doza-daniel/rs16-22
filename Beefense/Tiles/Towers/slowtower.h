@@ -7,7 +7,7 @@
 class SlowTower: public TowerActive
 {
 public:
-   SlowTower(int x, int y, QGraphicsScene *game, const QPixmap &pic = QPixmap(":/images/tower/tower_active.png"));
+   SlowTower(int x, int y, QGraphicsScene *game, const QPixmap &pic = QPixmap(":/images/tower/slow_tower.png"));
 
    Projectile* createProjectile(Enemy *target);
 };
