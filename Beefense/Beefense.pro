@@ -32,6 +32,8 @@ SOURCES += \
     Tiles/Towers/greaterattacktower.cpp \
     Tiles/Towers/greaterrangetower.cpp \
     Menu/createtower.cpp \
+    Logic/levelreader.cpp \
+    Logic/level.cpp \
     Menu/destroytower.cpp
 
 HEADERS  += \
@@ -53,6 +55,8 @@ HEADERS  += \
     Tiles/Towers/greaterattacktower.h \
     Tiles/Towers/greaterrangetower.h \
     Menu/createtower.h \
+    Logic/levelreader.h \
+    Logic/level.h \
     Menu/destroytower.h
 
 FORMS    += \

@@ -14,13 +14,24 @@
 #include "Menu/createtower.h"
 
 const int WAVE_SPAWN_TIME = 10000;
-
+QVector<Level *> levelList;
 
 Game::Game(const QRectF &sceneRect, int level, QObject *parent)
     : QGraphicsScene(sceneRect, parent),
-      mView(this),
-      mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level)
+      mView(this)
 {
+    levelList = Level::getLevels(":/levels/levels.xml");
+    bool levelSet = false;
+    for(Level *l : levelList) {
+        if(l->getNumber() == level) {
+            mLevel = *(l);
+            levelSet = true;
+        }
+    }
+    if(!levelSet) {
+        qDebug() << "Level " << level << " does not exist!";
+        exit(EXIT_FAILURE);
+    }
     initView();
     showMap();
 
@@ -38,9 +49,20 @@ Game::Game(const QRectF &sceneRect, int level, QObject *parent)
 
 Game::Game(qreal x, qreal y, qreal width, qreal height, int level, QObject *parent)
     : QGraphicsScene(x, y, width, height, parent),
-      mView(this),
-       mMap(this->height() / TILE_DIM, this->width() / TILE_DIM, level)
+      mView(this)
 {
+    levelList = Level::getLevels(":/levels/levels.xml");
+    bool levelSet = false;
+    for(Level *l : levelList) {
+        if(l->getNumber() == level) {
+            mLevel = *(l);
+            levelSet = true;
+        }
+    }
+    if(!levelSet) {
+        qDebug() << "Level " << level << " does not exist!";
+        exit(EXIT_FAILURE);
+    }
     initView();
     showMap();
 
@@ -62,12 +84,12 @@ Game::~Game()
 
 Map Game::getMap() const
 {
-    return mMap;
+    return *(mLevel.getMap());
 }
 
 void Game::showMap()
 {
-    QVector< QVector<Tile *> > m = mMap.getMap();
+    QVector< QVector<Tile *> > m = mLevel.getMap()->getMap();
     for(int i = 0; i < m.size(); ++i) {
         for(int j = 0; j < m[i].size(); ++j) {
             addItem(m[i][j]);

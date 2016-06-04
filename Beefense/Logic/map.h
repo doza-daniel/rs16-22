@@ -3,17 +3,16 @@
 
 #include "Tiles/tile.h"
 
+#include <QStringList>
 #include <QVector>
 #include <QString>
 #include <QPointF>
 #include <QGraphicsScene>
 
-extern QVector<QString> levelList;
-
 class Map
 {
 public:
-    Map(int rows, int cols, int level = 1);
+    Map(int rows, int cols, QStringList csv);
     QVector<QPointF *> getPath() const;
     QVector< QVector<Tile *> > getMap() const;
     QVector<Tile *> getTowers() const;
@@ -25,7 +24,6 @@ public:
 private:
     int mRows;
     int mCols;
-    int mLevel;
     Tile *mStart;
     Tile *mEnd;
     QVector< QVector<Tile *> > mMap;
@@ -37,10 +35,10 @@ private:
         None, Up, Down, Left, Right
     };
 
-    void loadMap();
+    void loadMap(QStringList csv);
     void generatePath();
     Direction nextDirection(int i, int j, Direction curr) const;
-    QVector< QVector<TileType> > readCSVMap();
+    QVector< QVector<TileType> > readCSVMap(QStringList csv);
 
 
 };

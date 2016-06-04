@@ -1,7 +1,7 @@
 #include "grasstile.h"
 
 GrassTile::GrassTile(int dim, int x, int y)
-    : Tile(QPixmap(":/images/tile/grass.jpg"), dim, x, y)
+    : Tile(QPixmap(":/images/tile/grasstile.png"), dim, x, y)
 {
     mType = TileType::Grass;
 }

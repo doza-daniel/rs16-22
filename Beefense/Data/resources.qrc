@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>levels/01.txt</file>
-        <file>levels/02.txt</file>
-        <file>levels/03.txt</file>
-        <file>images/enemy/bee.png</file>
         <file>images/main menu/natureMain.jpg</file>
-        <file>images/tile/end.jpg</file>
-        <file>images/tile/grass.jpg</file>
-        <file>images/tile/road.jpg</file>
-        <file>images/tile/start.jpg</file>
+        <file>levels/levels.xml</file>
+        <file>images/tile/grasstile.png</file>
+        <file>images/tile/start.png</file>
+        <file>images/tower/greater_attack_tower.png</file>
+        <file>images/tower/greater_range_tower.png</file>
+        <file>images/tower/toweractive.png</file>
+        <file>images/tower/tower_passive.png</file>
+        <file>images/enemy/bee.png</file>
+        <file>images/tile/road.png</file>
+        <file>images/tile/road_corner.png</file>
+        <file>images/tile/end.png</file>
         <file>images/tower/bullet.png</file>
-        <file>images/tower/tower_active.jpg</file>
-        <file>images/tower/tower_passive.jpg</file>
-        <file>images/tower/greater_attack_tower.jpg</file>
-        <file>images/tower/greater_range_tower.jpg</file>
+        <file>images/enemy/angry_bee.png</file>
     </qresource>
 </RCC>

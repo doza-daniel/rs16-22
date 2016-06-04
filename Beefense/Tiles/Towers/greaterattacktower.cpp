@@ -4,7 +4,7 @@ const int POWER_INCREASE = 2;
 
 
 GreaterAttackTower::GreaterAttackTower(int x, int y, QGraphicsScene *game)
-    : TowerActive(x, y, game, QPixmap(":/images/tower/greater_attack_tower.jpg"))
+    : TowerActive(x, y, game, QPixmap(":/images/tower/greater_attack_tower.png"))
 {
     setAttackPower(getAttackPower() + POWER_INCREASE);
 }

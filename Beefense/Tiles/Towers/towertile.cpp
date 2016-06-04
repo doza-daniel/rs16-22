@@ -2,7 +2,7 @@
 #include "toweractive.h"
 
 TowerTile::TowerTile(int dim, int x, int y)
-    : Tile(QPixmap(":/images/tower/tower_passive.jpg"), dim, x, y)
+    : Tile(QPixmap(":/images/tower/tower_passive.png"), dim, x, y)
 {
     mType = TileType::Tower;
     setZValue(1100);

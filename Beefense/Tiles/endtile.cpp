@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 EndTile::EndTile(int dim, int x, int y)
-    : Tile(QPixmap(":/images/tile/end.jpg"), dim, x, y)
+    : Tile(QPixmap(":/images/tile/end.png"), dim, x, y)
 {
     mType = TileType::End;
 }
