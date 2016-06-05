@@ -59,20 +59,16 @@ int Projectile::getAttackPower() const
 
 void Projectile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
-    QGraphicsPixmapItem::paint(painter, option, w);
-//    painter->setBrush(Qt::red);
-//    painter->drawPath(this->shape());
+    //TODO uncomment this when a  cool bullet picture is added
+    //QGraphicsPixmapItem::paint(painter, option, w);
+    painter->setBrush(Qt::blue);
+    painter->drawPath(shape());
 }
 
 QPainterPath Projectile::shape() const
 {
-    QVector<QPointF> pts;
-    pts << QPointF(0, 0) << QPointF(1, 0.5) << QPointF(0, 1);
-    for(auto &p: pts)
-        p *= mDimension;
-
     QPainterPath path;
-    path.addPolygon(QPolygonF(pts));
+    path.addEllipse(boundingRect().center(), mDimension * 0.5, mDimension * 0.5);
     return path;
 }
 

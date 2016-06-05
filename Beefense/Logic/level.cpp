@@ -62,7 +62,6 @@ int Level::getWaves() const
 
 void Level::setWaves(int waves)
 {
-    qDebug() << waves;
     mWaves = waves;
 }
 
