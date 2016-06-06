@@ -31,18 +31,19 @@ void CreateTower::buy()
     TowerActive *twr = nullptr;
     switch(type){
         case 3:
+        if(mGame->getGold() >= SlowTower::getCost())
             twr = new SlowTower(mPos.x(),mPos.y(),mGame);
         break;
         case 2:
-        if(mGame->getGold() >= 25)
+        if(mGame->getGold() >= TowerActive::getCost())
             twr = new TowerActive(mPos.x(),mPos.y(),mGame);
         break;
         case 1:
-        if(mGame->getGold() >= 35)
+        if(mGame->getGold() >= GreaterRangeTower::getCost())
              twr = new GreaterRangeTower(mPos.x(), mPos.y(), mGame);
         break;
         case 0:
-            if(mGame->getGold() >= 35)
+            if(mGame->getGold() >= GreaterAttackTower::getCost())
                  twr = new GreaterAttackTower(mPos.x(), mPos.y(), mGame);
         break;
 

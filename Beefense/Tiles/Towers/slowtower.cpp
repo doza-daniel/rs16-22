@@ -8,5 +8,10 @@ SlowTower::SlowTower(int x, int y, QGraphicsScene *game, const QPixmap &pic):
 
 Projectile* SlowTower::createProjectile(Enemy *target)
 {
-   return new SlowingProjectile(mGame,target,mAttackPower);
+    return new SlowingProjectile(mGame,target,mAttackPower);
+}
+
+int SlowTower::getCost()
+{
+    return COST;
 }
