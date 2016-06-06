@@ -19,10 +19,10 @@ public slots:
     void spawnEnemy();
     void intervalSpawn();
 private:
-    Game *mGame;
-    QTimer *mWaveTimer;
+    Game *mGame; 
     int mSpawnTime;
     int mEnemiesSpawned;
+    QTimer *mWaveTimer;
     int mNumWaves;
     int mWaves;
 };

@@ -6,6 +6,7 @@
 #include "Tiles/Towers/toweractive.h"
 #include "Tiles/Towers/towertile.h"
 #include "Logic/level.h"
+#include "spawner.h"
 
 #include <QGraphicsScene>
 #include <QObject>
@@ -40,7 +41,9 @@ private:
     void initGoldCalculator();
     QGraphicsView mView;
     Level mLevel;
+    Spawner *mSpawner;
     QGraphicsSimpleTextItem *mGoldItem;
+    QTimer *mAdvanceTimer;
 };
 
 #endif // GAME_H

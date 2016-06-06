@@ -1,4 +1,5 @@
 #include "greaterrangetower.h"
+#include "projectile.h"
 
 const double RANGE_INCREASE = 1.5;
 
@@ -16,4 +17,11 @@ void GreaterRangeTower::paint(QPainter *painter, const QStyleOptionGraphicsItem 
 int GreaterRangeTower::getCost()
 {
     return COST;
+}
+
+Projectile *GreaterRangeTower::createProjectile(Enemy *target)
+{
+    Projectile *p = new Projectile(mGame, target, mAttackPower);
+    p->setColor(QColor(137, 53, 255));
+    return p;
 }

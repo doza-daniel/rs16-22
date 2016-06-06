@@ -8,7 +8,9 @@ SlowTower::SlowTower(int x, int y, QGraphicsScene *game, const QPixmap &pic):
 
 Projectile* SlowTower::createProjectile(Enemy *target)
 {
-    return new SlowingProjectile(mGame,target,mAttackPower);
+    Projectile *p = new SlowingProjectile(mGame,target,mAttackPower);
+    p->setColor(QColor(110, 226, 176));
+    return p;
 }
 
 int SlowTower::getCost()

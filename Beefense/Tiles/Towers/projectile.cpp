@@ -17,7 +17,8 @@ Projectile::Projectile(QGraphicsScene *game,Enemy *target, int attackPower, int 
       mTip(dim, dim / 2),
       mDimension(dim),
       mMoveTimer(this),
-      mGame(game)
+      mGame(game),
+      mColor()
 {
     //sets the image of the projectile and scales it accordingly
     setPixmap(QPixmap(":/images/tower/bullet.png").scaled(dim + 4, dim + 4));
@@ -57,11 +58,21 @@ int Projectile::getAttackPower() const
     return mAttackPower;
 }
 
+void Projectile::setColor(const QColor &c)
+{
+    mColor = c;
+}
+
 void Projectile::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *w)
 {
     //TODO uncomment this when a  cool bullet picture is added
     //QGraphicsPixmapItem::paint(painter, option, w);
-    painter->setBrush(Qt::blue);
+
+    // removing the unused warning
+    static_cast<void>(option);
+    static_cast<void>(w);
+
+    painter->setBrush(mColor);
     painter->drawPath(shape());
 }
 

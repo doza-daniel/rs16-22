@@ -1,4 +1,5 @@
 #include "greaterattacktower.h"
+#include "projectile.h"
 
 const int POWER_INCREASE = 2;
 
@@ -17,4 +18,11 @@ void GreaterAttackTower::paint(QPainter *painter, const QStyleOptionGraphicsItem
 int GreaterAttackTower::getCost()
 {
     return COST;
+}
+
+Projectile *GreaterAttackTower::createProjectile(Enemy *target)
+{
+    Projectile *p = new Projectile(mGame, target, mAttackPower);
+    p->setColor(QColor(255, 80, 53));
+    return p;
 }

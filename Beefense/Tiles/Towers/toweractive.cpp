@@ -17,8 +17,8 @@ const int ATTACK_POWER = 1;
 TowerActive::TowerActive(int x, int y, QGraphicsScene *game, const QPixmap &pic)
     : QObject(),
       Tile(pic, TILE_DIM, x, y),
-      mAttackArea(this, game),
       mGame(game),
+      mAttackArea(this, game),      
       mAttackTimer(),
       mTargetAcquired(false)
 {
@@ -84,7 +84,10 @@ int TowerActive::getCost()
 
 Projectile* TowerActive::createProjectile(Enemy *target)
 {
-    return new Projectile(mGame,target, mAttackPower);
+    Projectile *p = new Projectile(mGame,target, mAttackPower);
+    // todo insert color
+    p->setColor(QColor(186, 207, 105));
+    return p;
 }
 
 void TowerActive::attackTarget(Enemy *target)

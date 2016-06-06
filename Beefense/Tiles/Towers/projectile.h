@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QPainterPath>
 #include <QGraphicsScene>
+#include <QColor>
 #include "../../Logic/game.h"
 
 extern const int SHOOTING_SPEED;
@@ -29,6 +30,7 @@ public:
     int getProjectileSpeed() const;
     void setAttackPower(int attackPower);
     int getAttackPower() const;
+    void setColor(const QColor &c);
 
     int getDimension() const;
 
@@ -55,6 +57,7 @@ private:
      int mProjectileSpeed = PROJECTILE_SPEED;
      void checkForHit();
      QGraphicsScene *mGame;
+     QColor mColor;
 };
 
 #endif // PROJECTILE_H
