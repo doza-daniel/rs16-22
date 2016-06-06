@@ -20,6 +20,7 @@ Game::Game(int level)
     initLevel(level);
     initView();
     showMap();
+    initGoldCalculator();
 
     Spawner *spawner = new Spawner(this, mLevel.getWaveSpawnTime(), mLevel.getWaves());
 }
@@ -91,6 +92,11 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
+void Game::calculateGold()
+{
+    mGoldItem->setText(QString::number(mLevel.getGold()));
+}
+
 void Game::initView()
 {
     mView.setScene(this);
@@ -117,4 +123,15 @@ void Game::initLevel(int level)
         qDebug() << "Level " << level << " does not exist!";
         exit(EXIT_FAILURE);
     }
+}
+
+void Game::initGoldCalculator()
+{
+    QTimer *t = new QTimer(this);
+    connect(t, SIGNAL(timeout()), this, SLOT(calculateGold()));
+    t->start(100);
+    mGoldItem = new QGraphicsSimpleTextItem(QString::number(mLevel.getGold()));
+    mGoldItem->setFont(QFont("Helvetica [Cronyx]", 20));
+    this->addItem(mGoldItem);
+    mGoldItem->setPos(0, 0);
 }

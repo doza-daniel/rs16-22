@@ -13,9 +13,11 @@
 #include <QGraphicsView>
 #include <QGraphicsSceneMouseEvent>
 #include <QVector>
+#include <QGraphicsSimpleTextItem>
 
 class Game : public QGraphicsScene
 {
+    Q_OBJECT
 public:
     Game(int level);
     ~Game();
@@ -29,12 +31,16 @@ public:
     int getGold();
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
+public slots:
+    void calculateGold();
 
 private:
     void initView();
     void initLevel(int level);
+    void initGoldCalculator();
     QGraphicsView mView;
     Level mLevel;
+    QGraphicsSimpleTextItem *mGoldItem;
 };
 
 #endif // GAME_H

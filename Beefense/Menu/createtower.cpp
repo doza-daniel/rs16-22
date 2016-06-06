@@ -28,28 +28,33 @@ CreateTower::~CreateTower()
 void CreateTower::buy()
 {
     int type = ui->createList->currentRow();
+    int towerCost = 0;
     TowerActive *twr = nullptr;
     switch(type){
         case 3:
         if(mGame->getGold() >= SlowTower::getCost())
             twr = new SlowTower(mPos.x(),mPos.y(),mGame);
+        towerCost = SlowTower::getCost();
         break;
         case 2:
         if(mGame->getGold() >= TowerActive::getCost())
             twr = new TowerActive(mPos.x(),mPos.y(),mGame);
+        towerCost = TowerActive::getCost();
         break;
         case 1:
         if(mGame->getGold() >= GreaterRangeTower::getCost())
              twr = new GreaterRangeTower(mPos.x(), mPos.y(), mGame);
+        towerCost = GreaterRangeTower::getCost();
         break;
         case 0:
             if(mGame->getGold() >= GreaterAttackTower::getCost())
                  twr = new GreaterAttackTower(mPos.x(), mPos.y(), mGame);
+            towerCost = GreaterAttackTower::getCost();
         break;
 
     }
     if(twr){
-        mGame->setGold(mGame->getGold()-twr->getCost());
+        mGame->setGold(mGame->getGold() - towerCost);
         mGame->addItem(twr);
         delete mTilePlace;
         ui->cancelButton->click();
