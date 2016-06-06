@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QTimer>
 
-const int SPAWN_TIME = 500;
+const int SPAWN_TIME = TILE_DIM * 10;
 const int SPAWN_N = 5;
 
 Spawner::Spawner(Game *game, int spawnTime, int numWaves)

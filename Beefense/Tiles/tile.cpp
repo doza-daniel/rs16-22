@@ -2,7 +2,7 @@
 #include <QTime>
 #include <QDebug>
 
-const int TILE_DIM = 50;
+const int TILE_DIM = 60;
 
 Tile::Tile(QPixmap pic, int dim, int x, int y)
     : mTile(QRectF(0, 0, dim, dim)), mCenter(mTile.center())
