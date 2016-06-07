@@ -45,3 +45,4 @@ void Dialog::back()
     w->show();
     this->close();
 }
+

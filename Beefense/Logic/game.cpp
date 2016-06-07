@@ -95,7 +95,7 @@ void Game::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void Game::calculateGold()
 {
-    mGoldItem->setText(QString::number(mLevel.getGold()) + " $");
+    mGoldItem->setText(QString::number(mLevel.getGold()) + " g");
 }
 
 void Game::initView()
@@ -131,8 +131,8 @@ void Game::initGoldCalculator()
     mAdvanceTimer = new QTimer(this);
     connect(mAdvanceTimer, SIGNAL(timeout()), this, SLOT(calculateGold()));
     mAdvanceTimer->start(100);
-    mGoldItem = new QGraphicsSimpleTextItem(QString::number(mLevel.getGold()) + " $");
-    mGoldItem->setFont(QFont("Helvetica [Cronyx]", 35));
+    mGoldItem = new QGraphicsSimpleTextItem(QString::number(mLevel.getGold()) + " g");
+    mGoldItem->setFont(QFont("Helvetica [Cronyx]", 25));
     mGoldItem->setBrush(Qt::yellow);
     this->addItem(mGoldItem);
     mGoldItem->setPos(25, 25);
